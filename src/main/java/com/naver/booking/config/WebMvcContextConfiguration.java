@@ -19,6 +19,7 @@ public class WebMvcContextConfiguration implements WebMvcConfigurer {
         registry.addResourceHandler("/css/**").addResourceLocations("/css/").setCachePeriod(31556926);
         registry.addResourceHandler("/img/**").addResourceLocations("/img/").setCachePeriod(31556926);
         registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(31556926);
+        registry.addResourceHandler("/font/**").addResourceLocations("/font/").setCachePeriod(31556926);
     }
  
     // default servlet handler를 사용하게 합니다.
