@@ -12,6 +12,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.naver.booking.config.ApplicationConfiguration;
 import com.naver.booking.dto.PromotionDto;
+import com.naver.booking.service.PromotionService;
 
 class PromotionDaoTest {
 
@@ -29,6 +30,7 @@ class PromotionDaoTest {
 		for (PromotionDto promotionDto : categoryDtoList) {
 			System.out.println(promotionDto);
 		}
+		
 		
 		assertNotNull(categoryDtoList);
 	}

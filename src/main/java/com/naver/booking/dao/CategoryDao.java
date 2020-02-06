@@ -17,7 +17,6 @@ public class CategoryDao {
 	private NamedParameterJdbcTemplate jdbc;
 	private RowMapper<CategoryDto> rowMapper = BeanPropertyRowMapper.newInstance(CategoryDto.class);
 
-
 	public CategoryDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
