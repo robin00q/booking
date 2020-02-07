@@ -32,7 +32,7 @@ public class ProductDao {
 	}
 	
 	public int SelectCategoryCount(int categoryId) {
-		Map<String, ?> params = Collections.singletonMap("categoryId", categoryId);
+		Map<String, Integer> params = Collections.singletonMap("categoryId", categoryId);
 		return jdbc.queryForObject(ProductDaoSqls.SELECT_CATEGORY_COUNT, params, Integer.class);
 		
 	}

@@ -25,7 +25,10 @@ class ProductDaoTest {
 	void testSelectProductsJoinProductDisplayInfo() {
 		List<ProductDto> productDtoList = new ArrayList<ProductDto>();
 
-		productDtoList = productDao.SelectProductsJoinProductDisplayInfo(3, 0);
+		int categoryId = 3;
+		int start = 0;
+		
+		productDtoList = productDao.SelectProductsJoinProductDisplayInfo(categoryId, start);
 
 		for (ProductDto productDto : productDtoList) {
 			System.out.println(productDto);
@@ -36,7 +39,9 @@ class ProductDaoTest {
 	
 	@Test
 	void testSelectCategoryCount() {
-		int CategoryCount = productDao.SelectCategoryCount(3);
+		int categoryId = 3;
+		
+		int CategoryCount = productDao.SelectCategoryCount(categoryId);
 		
 		System.out.println(CategoryCount);
 		
