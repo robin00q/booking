@@ -17,3 +17,5 @@ buildNumber.properties
 .mvn/timing.properties
 
 src/main/resources/application.properties
+
+.classpath
