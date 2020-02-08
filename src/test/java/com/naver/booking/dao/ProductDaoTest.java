@@ -28,7 +28,7 @@ class ProductDaoTest {
 		int categoryId = 3;
 		int start = 0;
 		
-		productDtoList = productDao.SelectProductsJoinProductDisplayInfo(categoryId, start);
+		productDtoList = productDao.SelectProductsDisplayInfoByCategoryId(categoryId, start);
 
 		for (ProductDto productDto : productDtoList) {
 			System.out.println(productDto);
@@ -41,7 +41,7 @@ class ProductDaoTest {
 	void testSelectCategoryCount() {
 		int categoryId = 3;
 		
-		int CategoryCount = productDao.SelectCategoryCount(categoryId);
+		int CategoryCount = productDao.SelectCategoryCountByCategoryId(categoryId);
 		
 		System.out.println(CategoryCount);
 		

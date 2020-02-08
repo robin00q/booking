@@ -24,14 +24,14 @@ public class ProductDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-	public List<ProductDto> SelectProductsJoinProductDisplayInfo(int categoryId, int start){
+	public List<ProductDto> SelectProductsDisplayInfoByCategoryId(int categoryId, int start){
 		Map<String, Integer> params = new HashMap<>();
 		params.put("categoryId", categoryId);
 		params.put("start", start);
 		return jdbc.query(ProductDaoSqls.SELECT_PRODUCT_DESCRIPTION_FROM_DISPLAY_INFO_JOIN_PRODUCT_INFORMATION, params, rowMapper);
 	}
 	
-	public int SelectCategoryCount(int categoryId) {
+	public int SelectCategoryCountByCategoryId(int categoryId) {
 		Map<String, Integer> params = Collections.singletonMap("categoryId", categoryId);
 		return jdbc.queryForObject(ProductDaoSqls.SELECT_CATEGORY_COUNT, params, Integer.class);
 		
