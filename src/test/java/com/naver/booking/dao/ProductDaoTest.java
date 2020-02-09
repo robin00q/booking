@@ -12,7 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.naver.booking.config.ApplicationConfiguration;
-import com.naver.booking.dto.ProductDto;
+import com.naver.booking.dto.ProductApiDto;
 
 class ProductDaoTest {
 
@@ -23,14 +23,14 @@ class ProductDaoTest {
 
 	@Test
 	void testSelectProductsJoinProductDisplayInfo() {
-		List<ProductDto> productDtoList = new ArrayList<ProductDto>();
+		List<ProductApiDto> productDtoList = new ArrayList<ProductApiDto>();
 
 		int categoryId = 3;
 		int start = 0;
 		
 		productDtoList = productDao.SelectProductsDisplayInfoByCategoryId(categoryId, start);
 
-		for (ProductDto productDto : productDtoList) {
+		for (ProductApiDto productDto : productDtoList) {
 			System.out.println(productDto);
 		}
 

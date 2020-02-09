@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.naver.booking.dao.PromotionDao;
-import com.naver.booking.dto.PromotionDto;
+import com.naver.booking.dto.PromotionApiDto;
 import com.naver.booking.service.PromotionService;
 
 @Service
@@ -17,7 +17,7 @@ public class PromotionServiceImpl implements PromotionService{
 	PromotionDao promotionDao;
 	
 	@Transactional
-	public List<PromotionDto> getPromotionsIdProductIdSaveFileName() {
+	public List<PromotionApiDto> getPromotionsIdProductIdSaveFileName() {
 		return promotionDao.selectPromotionsIdProductIdSaveFileName();
 	}
 	

@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.naver.booking.config.ApplicationConfiguration;
-import com.naver.booking.dto.PromotionDto;
+import com.naver.booking.dto.PromotionApiDto;
 import com.naver.booking.service.PromotionService;
 
 class PromotionDaoTest {
@@ -23,11 +23,11 @@ class PromotionDaoTest {
 	
 	@Test
 	void testSelectPromotionInformation() {
-		List<PromotionDto> promotionDtoList = new ArrayList<PromotionDto>();
+		List<PromotionApiDto> promotionDtoList = new ArrayList<PromotionApiDto>();
 		
 		promotionDtoList = promotionDao.selectPromotionsIdProductIdSaveFileName();
 		
-		for (PromotionDto promotionDto : promotionDtoList) {
+		for (PromotionApiDto promotionDto : promotionDtoList) {
 			System.out.println(promotionDto);
 		}
 		

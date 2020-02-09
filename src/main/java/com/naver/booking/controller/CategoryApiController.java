@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.naver.booking.dto.CategoryDto;
+import com.naver.booking.dto.CategoryApiDto;
 import com.naver.booking.service.CategoryService;
 
 @RestController
@@ -22,7 +22,7 @@ public class CategoryApiController {
 	@GetMapping
 	public Map<String, Object> categoryApiList(){
 		
-		List<CategoryDto> categoryDtoList = categoryService.getCategoriesIdNameCount();
+		List<CategoryApiDto> categoryDtoList = categoryService.getCategoriesIdNameCount();
 		
 		Map<String, Object> ApiMap = new HashMap<>();
 		

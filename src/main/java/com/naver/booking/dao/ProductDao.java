@@ -12,19 +12,19 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.naver.booking.dto.ProductDto;
+import com.naver.booking.dto.ProductApiDto;
 
 @Repository
 public class ProductDao {
 
 	private NamedParameterJdbcTemplate jdbc;
-	private RowMapper<ProductDto> rowMapper = BeanPropertyRowMapper.newInstance(ProductDto.class);
+	private RowMapper<ProductApiDto> rowMapper = BeanPropertyRowMapper.newInstance(ProductApiDto.class);
 	
 	public ProductDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-	public List<ProductDto> SelectProductsDisplayInfoByCategoryId(int categoryId, int start){
+	public List<ProductApiDto> SelectProductsDisplayInfoByCategoryId(int categoryId, int start){
 		Map<String, Integer> params = new HashMap<>();
 		params.put("categoryId", categoryId);
 		params.put("start", start);

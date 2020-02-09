@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.naver.booking.dto.PromotionDto;
+import com.naver.booking.dto.PromotionApiDto;
 import com.naver.booking.service.PromotionService;
 
 @RestController
@@ -22,7 +22,7 @@ public class PromotionApiController {
 	@GetMapping
 	public Map<String, Object> promotionApiList(){
 		
-		List<PromotionDto> promotionDtoList = promotionService.getPromotionsIdProductIdSaveFileName();
+		List<PromotionApiDto> promotionDtoList = promotionService.getPromotionsIdProductIdSaveFileName();
 		
 		Map<String, Object> ApiMap = new HashMap<>();
 		ApiMap.put("items", promotionDtoList);

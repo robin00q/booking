@@ -1,14 +1,14 @@
 package com.naver.booking.dto;
 
-public class CategoryDto {
+public class CategoryApiDto {
 
 	private int 	id;
 	private String 	name;
 	private int 	count;
 	
-	public CategoryDto() {}
+	public CategoryApiDto() {}
 	
-	public CategoryDto(int id, String name, int count) {
+	public CategoryApiDto(int id, String name, int count) {
 		this.id = id;
 		this.name = name;
 		this.count = count;

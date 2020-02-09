@@ -1,14 +1,14 @@
 package com.naver.booking.dto;
 
-public class PromotionDto {
+public class PromotionApiDto {
 
 	private int 	id;
 	private int 	productId;
 	private String  saveFileName;
 	
-	public PromotionDto() {}
+	public PromotionApiDto() {}
 
-	public PromotionDto(int id, int productId, String saveFileName) {
+	public PromotionApiDto(int id, int productId, String saveFileName) {
 		this.id = id;
 		this.productId = productId;
 		this.saveFileName = saveFileName;

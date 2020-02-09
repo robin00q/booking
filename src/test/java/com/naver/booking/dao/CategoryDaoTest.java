@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.naver.booking.config.ApplicationConfiguration;
-import com.naver.booking.dto.CategoryDto;
+import com.naver.booking.dto.CategoryApiDto;
 
 class CategoryDaoTest {
 	
@@ -22,11 +22,11 @@ class CategoryDaoTest {
 
 	@Test
 	void testSelectAll() {
-		List<CategoryDto> categoryDtoList = new ArrayList<CategoryDto>();
+		List<CategoryApiDto> categoryDtoList = new ArrayList<CategoryApiDto>();
 		
 		categoryDtoList = categoryDao.selectCategoriesIdNameCount();
 		
-		for (CategoryDto categoryDto : categoryDtoList) {
+		for (CategoryApiDto categoryDto : categoryDtoList) {
 			System.out.println(categoryDto);
 		}
 		
