@@ -30,15 +30,21 @@ public class MainController {
 	public String mainPage(ModelMap modelMap) {
 
 		int initialCategoryId = 1;
+		int totalCategoryCount = 0;
 		
 		List<PromotionApiDto> promotionList = promotionService.getPromotionsIdProductIdSaveFileName();
 		List<CategoryApiDto> categoryList = categoryService.getCategoriesIdNameCount();
 		List<ProductApiDto> productList = productService.getProductsDisplayInfoByCategoryId(initialCategoryId, 0);
 		
+		for (CategoryApiDto categoryApiDto : categoryList) {
+			totalCategoryCount += categoryApiDto.getCount();
+		}
+		
 		modelMap.put("promotionList", promotionList);
 		modelMap.put("categoryList", categoryList);
 		modelMap.put("productList", productList);
+		modelMap.put("totalCategoryCount", totalCategoryCount);
 		
-		return "main";
+		return "mainpage";
 	}
 }
