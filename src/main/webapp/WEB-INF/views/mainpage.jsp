@@ -18,9 +18,9 @@
             <header class="header_tit">
                 <h1 class="logo">
                     <a href="." class="lnk_logo" title="네이버"> <span class="spr_bi ico_n_logo">네이버</span> </a>
-                    <a href="./myreservation.html" class="lnk_logo" title="예약"> <span class="spr_bi ico_bk_logo">예약</span> </a>
+                    <a href="./myreservation" class="lnk_logo" title="예약"> <span class="spr_bi ico_bk_logo">예약</span> </a>
                 </h1>
-                <a href="./bookinglogin.html" class="btn_my"> <span class="viewReservation" title="예약확인">예약확인</span> </a>
+                <a href="./bookinglogin" class="btn_my"> <span class="viewReservation" title="예약확인">예약확인</span> </a>
             </header>
         </div>
         <hr>
@@ -39,9 +39,21 @@
                             </div>
                         </div>
                         <div>
-                            <div class="container_visual">
+                            <div class="container_visual" id="slide_container">
                                 <!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적으로 노출 -->
-                                <ul class="visual_img">
+                                <ul class="visual_img" id="slide_images">
+                                	<li class="img_promotion">
+                                		<img alt="테스트" src="img/1_th_1.png"/>
+                                	</li>
+                                	<li class="img_promotion">
+                                		<img alt="테스트" src="img/5_th_13.png"/>
+                                	</li>
+                                	<li class="img_promotion">
+                                		<img alt="테스트" src="img/6_th_18.png"/ >
+                                	</li>
+                                	<li class="img_promotion">
+                                		<img alt="테스트" src="img/1_th_1.png"/>
+                                	</li>
                                 </ul>
                             </div>
                             <span class="nxt_fix" style="display:none;"></span>
