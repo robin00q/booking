@@ -6,8 +6,6 @@ anchorClass.addEventListener('click', function(event){
     
 	changeTotalCategoryCount(categoryCount);
     
-    
-    
 }, false);
 
 function toggleActiveBar(anchorClass, event){
@@ -33,3 +31,22 @@ function changeTotalCategoryCount(categoryCount){
 	
 	totalCategoryCount.innerText = categoryCount.toString() + "개";
 }
+
+var slideImages = document.querySelector("#slide_images");
+var currentTranslateX = 0;
+
+function slideLeft(){
+	setTimeout(()=>{
+		if(currentTranslateX === -75){
+			currentTranslateX = 0;
+			slideImages.style.transition = 'all 0s ease 0s';
+			slideImages.style.transform = "translateX(" + currentTranslateX.toString() + "%)";
+			slideImages.style.transition = 'all 1.0s';
+		}
+		currentTranslateX -= 25;
+		slideImages.style.transform = "translateX(" + currentTranslateX.toString() + "%)";
+		slideLeft();
+	}, 3000);
+}
+
+slideLeft();
