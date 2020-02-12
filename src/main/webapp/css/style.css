@@ -3831,14 +3831,10 @@ button {
 }
 
 #slide_images {
-	width : 400%;
-	transition : all 1.0s ease-in-out;
-	transform : translateX(0%);
-	transform-origin : translateX(0%);
+	transition : none;
 }
 
 .img_promotion {
-	width : 25%;
 	float : left;
 }
 

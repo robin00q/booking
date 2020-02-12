@@ -31,24 +31,3 @@ function changeTotalCategoryCount(categoryCount){
 	
 	totalCategoryCount.innerText = categoryCount.toString() + "개";
 }
-
-var slideImages = document.querySelector("#slide_images");
-var currentTranslateX = 0;
-
-function slideLeft(){
-	setTimeout(()=>{
-		currentTranslateX -= 25;
-		slideImages.style.transition = 'all 1.0s';
-		slideImages.style.transform = "translateX(" + currentTranslateX.toString() + "%)";
-		if(currentTranslateX === -75){
-			setTimeout(()=>{
-				slideImages.style.transition = 'none';
-				slideImages.style.transform = "translateX(" + currentTranslateX.toString() + "%)";
-			}, 1000)
-			currentTranslateX = 0;
-		}
-		slideLeft();
-	}, 3000);
-}
-
-slideLeft();

@@ -42,17 +42,13 @@
                             <div class="container_visual" id="slide_container">
                                 <!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적으로 노출 -->
                                 <ul class="visual_img" id="slide_images">
+                                	<c:forEach items="${promotionList}" var="promotionList">
                                 	<li class="img_promotion">
-                                		<img alt="테스트" src="img/1_th_1.png"/>
+                                		<img alt="promotion" src="${promotionList.getSaveFileName()}"/>
                                 	</li>
+                                	</c:forEach>
                                 	<li class="img_promotion">
-                                		<img alt="테스트" src="img/5_th_13.png"/>
-                                	</li>
-                                	<li class="img_promotion">
-                                		<img alt="테스트" src="img/6_th_18.png"/ >
-                                	</li>
-                                	<li class="img_promotion">
-                                		<img alt="테스트" src="img/1_th_1.png"/>
+                                		<img alt="promotion" src="${promotionList[0].getSaveFileName()}"/>
                                 	</li>
                                 </ul>
                             </div>
@@ -146,7 +142,6 @@
         </div>
     </footer>
 
-
     <script type="rv-template" id="promotionItem">
     <li class="item" style="background-image: url(http://211.249.62.123/productImages/${productId}/${productImageId});">
         <a href="#"> <span class="img_btm_border"></span> <span class="img_right_border"></span> <span class="img_bg_gra"></span>
@@ -173,7 +168,8 @@
             </a>
         </li>
     </script>
-    <script src="js/main.js"></script>
+    <script src="js/promotionSlider.js"></script>
+    <script src="js/categoryCount.js"/>
 </body>
 
 </html>
