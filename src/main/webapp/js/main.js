@@ -37,14 +37,16 @@ var currentTranslateX = 0;
 
 function slideLeft(){
 	setTimeout(()=>{
-		if(currentTranslateX === -75){
-			currentTranslateX = 0;
-			slideImages.style.transition = 'all 0s ease 0s';
-			slideImages.style.transform = "translateX(" + currentTranslateX.toString() + "%)";
-			slideImages.style.transition = 'all 1.0s';
-		}
 		currentTranslateX -= 25;
+		slideImages.style.transition = 'all 1.0s';
 		slideImages.style.transform = "translateX(" + currentTranslateX.toString() + "%)";
+		if(currentTranslateX === -75){
+			setTimeout(()=>{
+				slideImages.style.transition = 'none';
+				slideImages.style.transform = "translateX(" + currentTranslateX.toString() + "%)";
+			}, 1000)
+			currentTranslateX = 0;
+		}
 		slideLeft();
 	}, 3000);
 }
