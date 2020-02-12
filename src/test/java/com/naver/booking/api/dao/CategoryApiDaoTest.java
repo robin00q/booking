@@ -1,4 +1,4 @@
-package com.naver.booking.dao;
+package com.naver.booking.api.dao;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -10,27 +10,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.naver.booking.api.dao.CategoryApiDao;
+import com.naver.booking.api.dto.CategoryApiDto;
 import com.naver.booking.config.ApplicationConfiguration;
-import com.naver.booking.dto.CategoryApiDto;
 
-class CategoryDaoTest {
+class CategoryApiDaoTest {
 	
 	@Autowired
 	ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
 	
-	CategoryDao categoryDao = ac.getBean(CategoryDao.class);
+	CategoryApiDao categoryApiDao = ac.getBean(CategoryApiDao.class);
 
 	@Test
 	void testSelectAll() {
-		List<CategoryApiDto> categoryDtoList = new ArrayList<CategoryApiDto>();
+		List<CategoryApiDto> categoryApiDtoList = new ArrayList<CategoryApiDto>();
 		
-		categoryDtoList = categoryDao.selectCategoriesIdNameCount();
+		categoryApiDtoList = categoryApiDao.selectCategoriesApi();
 		
-		for (CategoryApiDto categoryDto : categoryDtoList) {
-			System.out.println(categoryDto);
+		for (CategoryApiDto categoryApiDto : categoryApiDtoList) {
+			System.out.println(categoryApiDto);
 		}
 		
-		assertNotNull(categoryDtoList);
+		assertNotNull(categoryApiDtoList);
 	}
 
 }

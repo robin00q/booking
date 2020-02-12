@@ -1,4 +1,4 @@
-package com.naver.booking.dto;
+package com.naver.booking.api.dto;
 
 public class CategoryApiDto {
 
@@ -36,7 +36,7 @@ public class CategoryApiDto {
 
 	@Override
 	public String toString() {
-		return "CategoryDto [id=" + id + ", name=" + name + ", count=" + count + "]";
+		return "CategoryApiDto [id=" + id + ", name=" + name + ", count=" + count + "]";
 	}
 
 }

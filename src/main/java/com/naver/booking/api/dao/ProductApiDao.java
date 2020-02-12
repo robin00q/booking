@@ -1,4 +1,4 @@
-package com.naver.booking.dao;
+package com.naver.booking.api.dao;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,28 +12,28 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.naver.booking.dto.ProductApiDto;
+import com.naver.booking.api.dto.ProductApiDto;
 
 @Repository
-public class ProductDao {
+public class ProductApiDao {
 
 	private NamedParameterJdbcTemplate jdbc;
 	private RowMapper<ProductApiDto> rowMapper = BeanPropertyRowMapper.newInstance(ProductApiDto.class);
 	
-	public ProductDao(DataSource dataSource) {
+	public ProductApiDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-	public List<ProductApiDto> SelectProductsDisplayInfoByCategoryId(int categoryId, int start){
+	public List<ProductApiDto> SelectProductsApi(int categoryId, int start){
 		Map<String, Integer> params = new HashMap<>();
 		params.put("categoryId", categoryId);
 		params.put("start", start);
-		return jdbc.query(ProductDaoSqls.SELECT_PRODUCT_DESCRIPTION_FROM_DISPLAY_INFO_JOIN_PRODUCT_INFORMATION, params, rowMapper);
+		return jdbc.query(ProductApiDaoSqls.SELECT_PRODUCTS_API, params, rowMapper);
 	}
 	
-	public int SelectCategoryCountByCategoryId(int categoryId) {
+	public int SelectProductCountByCategory(int categoryId) {
 		Map<String, Integer> params = Collections.singletonMap("categoryId", categoryId);
-		return jdbc.queryForObject(ProductDaoSqls.SELECT_CATEGORY_COUNT, params, Integer.class);
+		return jdbc.queryForObject(ProductApiDaoSqls.SELECT_PRODUCT_COUNT_BY_CATEGORY, params, Integer.class);
 		
 	}
 }

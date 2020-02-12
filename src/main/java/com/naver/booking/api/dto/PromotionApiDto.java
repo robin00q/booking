@@ -1,4 +1,4 @@
-package com.naver.booking.dto;
+package com.naver.booking.api.dto;
 
 public class PromotionApiDto {
 
@@ -35,8 +35,7 @@ public class PromotionApiDto {
 
 	@Override
 	public String toString() {
-		return "PromotionDto [id=" + id + ", productId=" + productId + ", saveFileName=" + saveFileName + "]";
+		return "PromotionApiDto [id=" + id + ", productId=" + productId + ", saveFileName=" + saveFileName + "]";
 	}
-	
 	
 }

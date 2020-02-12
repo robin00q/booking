@@ -42,13 +42,13 @@
                             <div class="container_visual" id="slide_container">
                                 <!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적으로 노출 -->
                                 <ul class="visual_img" id="slide_images">
-                                	<c:forEach items="${promotionList}" var="promotionList">
+                                	<c:forEach items="${promotionApiList}" var="promotionList">
                                 	<li class="img_promotion">
-                                		<img alt="promotion" src="${promotionList.getSaveFileName()}"/>
+                                		<img alt="promotion" src="${promotionApiList.getSaveFileName()}"/>
                                 	</li>
                                 	</c:forEach>
                                 	<li class="img_promotion">
-                                		<img alt="promotion" src="${promotionList[0].getSaveFileName()}"/>
+                                		<img alt="promotion" src="${promotionApiList[0].getSaveFileName()}"/>
                                 	</li>
                                 </ul>
                             </div>
@@ -59,19 +59,19 @@
             </div>
             <div class="section_event_tab">
                 <ul class="event_tab_lst tab_lst_min">
-                    <li class="item" data-category="0" data-count="${totalCategoryCount}">
+                    <li class="item" data-category="0" data-count="${displayInfoTotalCount}">
                         <a class="anchor active"> <span>전체리스트</span> </a>
                     </li>
-                    <c:forEach items="${categoryList}" var="categoryList">
-                    <li class="item" data-category="${categoryList.getId()}" data-count="${categoryList.getCount()}">
-                        <a class="anchor"> <span>${categoryList.getName()}</span> </a>
+                    <c:forEach items="${categoryApiList}" var="categoryList">
+                    <li class="item" data-category="${categoryApiList.getId()}" data-count="${categoryApiList.getCount()}">
+                        <a class="anchor"> <span>${categoryApiList.getName()}</span> </a>
                     </li>
 					</c:forEach>
                 </ul>
             </div>
             <div class="section_event_lst">
                 <p class="event_lst_txt">
-					바로 예매 가능한 행사가 <span class="pink" id="category_count">${totalCategoryCount}개</span> 있습니다
+					바로 예매 가능한 행사가 <span class="pink" id="category_count">${displayInfoTotalCount}개</span> 있습니다
                 </p>
                 <div class="wrap_event_box">
                     <!-- [D] lst_event_box 가 2컬럼으로 좌우로 나뉨, 더보기를 클릭할때마다 좌우 ul에 li가 추가됨 -->

@@ -1,4 +1,4 @@
-package com.naver.booking.controller;
+package com.naver.booking.api.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,28 +10,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.naver.booking.dto.ProductApiDto;
-import com.naver.booking.service.ProductService;
+import com.naver.booking.api.dto.ProductApiDto;
+import com.naver.booking.api.service.ProductApiService;
 
 @RestController
 @RequestMapping(path="/api/products")
 public class ProductApiController {
 
 	@Autowired
-	ProductService productService;
+	ProductApiService productApiService;
 	
 	@GetMapping
 	public Map<String, Object> productApiList(@RequestParam(name="categoryId") int categoryId, @RequestParam(name="start", required=false, defaultValue="0") int start){
 		
-		List<ProductApiDto> productDtoListByCategoryId = productService.getProductsDisplayInfoByCategoryId(categoryId, start);
+		List<ProductApiDto> productApiDtoListByCategoryId = productApiService.getProductsApi(categoryId, start);
 		
-		int productTotalCountByCategoryId = productService.getCategoryCountByCategoryId(categoryId);
+		int productApiTotalCountByCategoryId = productApiService.getProductCountByCategory(categoryId);
 		
 		Map<String, Object> ApiMap = new HashMap<>();
 		
-		ApiMap.put("totalCount", productTotalCountByCategoryId);
+		ApiMap.put("totalCount", productApiTotalCountByCategoryId);
 		
-		ApiMap.put("items", productDtoListByCategoryId);
+		ApiMap.put("items", productApiDtoListByCategoryId);
 		
 		return ApiMap;
 	}

@@ -1,4 +1,4 @@
-package com.naver.booking.controller;
+package com.naver.booking.api.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,23 +9,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.naver.booking.dto.PromotionApiDto;
-import com.naver.booking.service.PromotionService;
+import com.naver.booking.api.dto.PromotionApiDto;
+import com.naver.booking.api.service.PromotionApiService;
 
 @RestController
 @RequestMapping(path="/api/promotions")
 public class PromotionApiController {
 
 	@Autowired
-	PromotionService promotionService;
+	PromotionApiService promotionApiService;
 	
 	@GetMapping
 	public Map<String, Object> promotionApiList(){
 		
-		List<PromotionApiDto> promotionDtoList = promotionService.getPromotionsIdProductIdSaveFileName();
+		List<PromotionApiDto> promotionApiDtoList = promotionApiService.getPromotionsApi();
 		
 		Map<String, Object> ApiMap = new HashMap<>();
-		ApiMap.put("items", promotionDtoList);
+		ApiMap.put("items", promotionApiDtoList);
 		
 		return ApiMap;
 	}

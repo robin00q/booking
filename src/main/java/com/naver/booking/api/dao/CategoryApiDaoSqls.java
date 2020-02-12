@@ -1,6 +1,6 @@
-package com.naver.booking.dao;
+package com.naver.booking.api.dao;
 
-public class CategoryDaoSqls {
+public class CategoryApiDaoSqls {
 	
 	public static final String SELECT_CATEGORIES_COUNT = 
 			"SELECT product.category_id, display_info.product_id "
@@ -8,7 +8,7 @@ public class CategoryDaoSqls {
 			+ "INNER JOIN display_info "
 			+ "ON product.id = display_info.product_id";
 	
-	public static final String SELECT_CATEGORIES_ID_NAME_COUNT = 
+	public static final String SELECT_CATEGORIES_API = 
 			"SELECT category.id, category.name, count(category.id) AS count "
 			+ "FROM category "
 			+ "INNER JOIN ("

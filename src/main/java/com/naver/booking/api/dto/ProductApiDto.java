@@ -1,4 +1,4 @@
-package com.naver.booking.dto;
+package com.naver.booking.api.dto;
 
 public class ProductApiDto {
 
@@ -71,9 +71,8 @@ public class ProductApiDto {
 
 	@Override
 	public String toString() {
-		return "ProductDto [displayInfoId=" + displayInfoId + ", productId=" + productId + ", productDescription="
+		return "ProductApiDto [displayInfoId=" + displayInfoId + ", productId=" + productId + ", productDescription="
 				+ productDescription + ", placeName=" + placeName + ", productContent=" + productContent
 				+ ", productImageUrl=" + productImageUrl + "]";
 	}
-	
 }

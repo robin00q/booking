@@ -1,4 +1,4 @@
-package com.naver.booking.dao;
+package com.naver.booking.api.dao;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -11,37 +11,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.naver.booking.api.dao.ProductApiDao;
+import com.naver.booking.api.dto.ProductApiDto;
 import com.naver.booking.config.ApplicationConfiguration;
-import com.naver.booking.dto.ProductApiDto;
 
-class ProductDaoTest {
+class ProductApiDaoTest {
 
 	@Autowired
 	ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
 
-	ProductDao productDao = ac.getBean(ProductDao.class);
+	ProductApiDao productApiDao = ac.getBean(ProductApiDao.class);
 
 	@Test
 	void testSelectProductsJoinProductDisplayInfo() {
-		List<ProductApiDto> productDtoList = new ArrayList<ProductApiDto>();
+		List<ProductApiDto> productApiDtoList = new ArrayList<ProductApiDto>();
 
 		int categoryId = 3;
 		int start = 0;
 		
-		productDtoList = productDao.SelectProductsDisplayInfoByCategoryId(categoryId, start);
+		productApiDtoList = productApiDao.SelectProductsApi(categoryId, start);
 
-		for (ProductApiDto productDto : productDtoList) {
-			System.out.println(productDto);
+		for (ProductApiDto productApiDto : productApiDtoList) {
+			System.out.println(productApiDto);
 		}
 
-		assertNotNull(productDtoList);
+		assertNotNull(productApiDtoList);
 	}
 	
 	@Test
-	void testSelectCategoryCount() {
+	void testSelectProductCountByCategory() {
 		int categoryId = 3;
 		
-		int CategoryCount = productDao.SelectCategoryCountByCategoryId(categoryId);
+		int CategoryCount = productApiDao.SelectProductCountByCategory(categoryId);
 		
 		System.out.println(CategoryCount);
 		

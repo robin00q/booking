@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.naver.booking.config.ApplicationConfiguration;
+import com.naver.booking.dao.DisplayInfoDao;
 
 class DisplayInfoDaoTest {
 

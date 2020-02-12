@@ -7,43 +7,43 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.naver.booking.dto.CategoryApiDto;
-import com.naver.booking.dto.ProductApiDto;
-import com.naver.booking.dto.PromotionApiDto;
-import com.naver.booking.service.CategoryService;
-import com.naver.booking.service.ProductService;
-import com.naver.booking.service.PromotionService;
+import com.naver.booking.api.dto.CategoryApiDto;
+import com.naver.booking.api.dto.ProductApiDto;
+import com.naver.booking.api.dto.PromotionApiDto;
+import com.naver.booking.api.service.CategoryApiService;
+import com.naver.booking.api.service.ProductApiService;
+import com.naver.booking.api.service.PromotionApiService;
+import com.naver.booking.service.DisplayInfoService;
 
 @Controller
 public class MainController {
 
 	@Autowired
-	PromotionService promotionService;
+	PromotionApiService promotionApiService;
 	
 	@Autowired
-	CategoryService categoryService;
+	CategoryApiService categoryApiService;
 	
 	@Autowired
-	ProductService productService;
+	ProductApiService productApiService;
+	
+	@Autowired
+	DisplayInfoService displayInfoService;
 	
 	@GetMapping(path="/")
 	public String mainPage(ModelMap modelMap) {
 
 		int initialCategoryId = 1;
-		int totalCategoryCount = 0;
 		
-		List<PromotionApiDto> promotionList = promotionService.getPromotionsIdProductIdSaveFileName();
-		List<CategoryApiDto> categoryList = categoryService.getCategoriesIdNameCount();
-		List<ProductApiDto> productList = productService.getProductsDisplayInfoByCategoryId(initialCategoryId, 0);
-
-		for (CategoryApiDto categoryApiDto : categoryList) {
-			totalCategoryCount += categoryApiDto.getCount();
-		}
+		int displayInfoTotalCount = displayInfoService.getDisplayInfoTotalCount();
+		List<PromotionApiDto> promotionApiList = promotionApiService.getPromotionsApi();
+		List<CategoryApiDto> categoryApiList = categoryApiService.getCategoriesApi();
+		List<ProductApiDto> productApiList = productApiService.getProductsApi(initialCategoryId, 0);
 		
-		modelMap.put("promotionList", promotionList);
-		modelMap.put("categoryList", categoryList);
-		modelMap.put("productList", productList);
-		modelMap.put("totalCategoryCount", totalCategoryCount);
+		modelMap.put("promotionApiList", promotionApiList);
+		modelMap.put("categoryApiList", categoryApiList);
+		modelMap.put("productApiList", productApiList);
+		modelMap.put("displayInfoTotalCount", displayInfoTotalCount);
 		
 		return "mainpage";
 	}

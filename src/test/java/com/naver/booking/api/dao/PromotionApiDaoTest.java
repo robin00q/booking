@@ -1,4 +1,4 @@
-package com.naver.booking.dao;
+package com.naver.booking.api.dao;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -10,29 +10,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.naver.booking.api.dao.PromotionApiDao;
+import com.naver.booking.api.dto.PromotionApiDto;
+import com.naver.booking.api.service.PromotionApiService;
 import com.naver.booking.config.ApplicationConfiguration;
-import com.naver.booking.dto.PromotionApiDto;
-import com.naver.booking.service.PromotionService;
 
-class PromotionDaoTest {
+class PromotionApiDaoTest {
 
 	@Autowired
 	ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
 	
-	PromotionDao promotionDao = ac.getBean(PromotionDao.class);
+	PromotionApiDao promotionApiDao = ac.getBean(PromotionApiDao.class);
 	
 	@Test
 	void testSelectPromotionInformation() {
-		List<PromotionApiDto> promotionDtoList = new ArrayList<PromotionApiDto>();
+		List<PromotionApiDto> promotionApiDtoList = new ArrayList<PromotionApiDto>();
 		
-		promotionDtoList = promotionDao.selectPromotionsIdProductIdSaveFileName();
+		promotionApiDtoList = promotionApiDao.selectPromotionsApi();
 		
-		for (PromotionApiDto promotionDto : promotionDtoList) {
-			System.out.println(promotionDto);
+		for (PromotionApiDto promotionApiDto : promotionApiDtoList) {
+			System.out.println(promotionApiDto);
 		}
 		
 		
-		assertNotNull(promotionDtoList);
+		assertNotNull(promotionApiDtoList);
 	}
 
 }
