@@ -35,7 +35,7 @@ public class MainController {
 		List<PromotionApiDto> promotionList = promotionService.getPromotionsIdProductIdSaveFileName();
 		List<CategoryApiDto> categoryList = categoryService.getCategoriesIdNameCount();
 		List<ProductApiDto> productList = productService.getProductsDisplayInfoByCategoryId(initialCategoryId, 0);
-		
+
 		for (CategoryApiDto categoryApiDto : categoryList) {
 			totalCategoryCount += categoryApiDto.getCount();
 		}

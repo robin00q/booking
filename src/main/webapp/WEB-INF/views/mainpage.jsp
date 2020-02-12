@@ -169,7 +169,7 @@
         </li>
     </script>
     <script src="js/promotionSlider.js"></script>
-    <script src="js/categoryCount.js"/>
+    <script src="js/categoryCount.js"></script>
 </body>
 
 </html>
