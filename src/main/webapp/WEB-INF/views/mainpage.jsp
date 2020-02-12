@@ -42,7 +42,7 @@
                             <div class="container_visual" id="slide_container">
                                 <!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적으로 노출 -->
                                 <ul class="visual_img" id="slide_images">
-                                	<c:forEach items="${promotionApiList}" var="promotionList">
+                                	<c:forEach items="${promotionApiList}" var="promotionApiList">
                                 	<li class="img_promotion">
                                 		<img alt="promotion" src="${promotionApiList.getSaveFileName()}"/>
                                 	</li>
@@ -62,9 +62,9 @@
                     <li class="item" data-category="0" data-count="${displayInfoTotalCount}">
                         <a class="anchor active"> <span>전체리스트</span> </a>
                     </li>
-                    <c:forEach items="${categoryApiList}" var="categoryList">
-                    <li class="item" data-category="${categoryApiList.getId()}" data-count="${categoryApiList.getCount()}">
-                        <a class="anchor"> <span>${categoryApiList.getName()}</span> </a>
+                    <c:forEach items="${categoryList}" var="categoryList">
+                    <li class="item" data-category="${categoryList.getId()}">
+                        <a class="anchor"> <span>${categoryList.getName()}</span> </a>
                     </li>
 					</c:forEach>
                 </ul>
@@ -75,7 +75,7 @@
                 </p>
                 <div class="wrap_event_box">
                     <!-- [D] lst_event_box 가 2컬럼으로 좌우로 나뉨, 더보기를 클릭할때마다 좌우 ul에 li가 추가됨 -->
-                    <ul class="lst_event_box">
+                    <ul class="lst_event_box" id="lst_event_box_left">
                         <li class="item">
                             <a href="detail.html" class="item_book">
                                 <div class="item_preview"> <img alt="뮤지컬 드림걸즈(DREAMGIRLS) 최초 내한" class="img_thumb" src="https://ssl.phinf.net/naverbooking/20170303_271/1488514705030TuUK4_JPEG/17%B5%E5%B8%B2%B0%C9%C1%EE_%B8%DE%C0%CE%C6%F7%BD%BA%C5%CD_%C3%D6%C1%BE.jpg?type=l591_945">                                    <span class="img_border"></span> </div>
@@ -103,7 +103,7 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="lst_event_box">
+                    <ul class="lst_event_box" id="lst_event_box_right">
                         <li class="item">
                             <a href="detail.html" class="item_book">
                                 <div class="item_preview"> <img alt="뮤지컬 로미오와 줄리엣" class="img_thumb" src="https://ssl.phinf.net/naverbooking/20170119_135/1484789767866RPO6o_JPEG/%B7%CE%B9%CC%BF%C0%C1%D9%B8%AE%BF%A7_1242.jpg?type=l591_945"> <span class="img_border"></span> </div>
@@ -164,6 +164,20 @@
                 <div class="event_txt">
                     <h4 class="event_txt_tit"> <span>${description}</span> <small class="sm">${placeName}</small> </h4>
                     <p class="event_txt_dsc">${content}</p>
+                </div>
+            </a>
+        </li>
+    </script>
+    <script type="rv-template" id="itemListforTest">
+        <li class="item">
+            <a href="detail.html" class="item_book">
+                <div class="item_preview">
+                    <img alt="{description}" class="img_thumb" src="{imageUrl}">
+                    <span class="img_border"></span>
+                </div>
+                <div class="event_txt">
+                    <h4 class="event_txt_tit"> <span>{description}</span> <small class="sm">{placeName}</small> </h4>
+                    <p class="event_txt_dsc">{content}</p>
                 </div>
             </a>
         </li>
