@@ -126,7 +126,7 @@
                     </ul>
                     <!-- 더보기 -->
                     <div class="more">
-                        <button class="btn"><span>더보기</span></button>
+                        <button class="btn" id="show-more"><span>더보기</span></button>
                     </div>
                 </div>
             </div>
@@ -176,14 +176,14 @@
                     <span class="img_border"></span>
                 </div>
                 <div class="event_txt">
-                    <h4 class="event_txt_tit"> <span>{description}</span> <small class="sm">{placeName}</small> </h4>
+                    <h4 class="event_txt_tit"> <span>{descriptionSpan}</span> <small class="sm">{placeName}</small> </h4>
                     <p class="event_txt_dsc">{content}</p>
                 </div>
             </a>
         </li>
     </script>
     <script src="js/promotionSlider.js"></script>
-    <script src="js/categoryCount.js"></script>
+    <script src="js/getProducts.js"></script>
 </body>
 
 </html>
