@@ -4,49 +4,51 @@ var leftBox = document.querySelector("#lst_event_box_left");
 var rightBox = document.querySelector("#lst_event_box_right");
 var moreButton = document.querySelector("#show-more");
 
-anchorClass.addEventListener('click', function(event){
-	currentStartPoint = 0;
-	clearBox(leftBox);
-	clearBox(rightBox);
-	var categoryId = GetCategoryIdByClickedPosition(anchorClass, event);
+window.addEventListener('load', function(event){
+	var categoryId = 0;
 	getFourProductUsingAjax(0, categoryId);
-	
+}, false);
+
+anchorClass.addEventListener('click', function(event){
+	var categoryId = GetCategoryIdByClickedPosition(anchorClass, event);
+	if(categoryId != null){
+		currentStartPoint = 0;
+		clearBox(leftBox);
+		clearBox(rightBox);
+		getFourProductUsingAjax(0, categoryId);
+	}
 }, false);
 
 moreButton.addEventListener('click', function(event){
 	var categoryId = GetCategoryIdByActive(anchorClass, event);
 	getFourProductUsingAjax(1, categoryId);
-	
 }, false);
 
 function GetCategoryIdByClickedPosition(anchorClass, event){
 	if(event.target.tagName === 'A' || event.target.tagName === 'SPAN' || event.target.tagName === 'LI'){
 		var tobeRemovedActive = anchorClass.querySelector('.active');
 		var tobeAddedActive = getClosestLiTag(event);
+		var categoryId = tobeAddedActive.getAttribute("data-category");
 		
 		updateSectionEventTab(tobeRemovedActive, tobeAddedActive);
 		
-		var categoryId = tobeAddedActive.getAttribute("data-category");
-		
 		return categoryId;
+	} else {
+		return null;
 	}
 }
 
 function GetCategoryIdByActive(anchorClass, event){
-	var Active = anchorClass.querySelector('.active').closest("li");
-	
-	return Active.getAttribute("data-category");
+	return anchorClass.querySelector('.active').closest("li").getAttribute("data-category");
 }
 
 function getFourProductUsingAjax(type, categoryId){
 	var RequestURL = "http://localhost:8080/booking/api/products?categoryId=" + categoryId.toString() +"&start=" + currentStartPoint.toString();
-	
 	var xmlReq = new XMLHttpRequest();
 
 	xmlReq.onload = function(){
 		if(xmlReq.status == 200){
 			var jsonobj = JSON.parse(this.responseText);
-			
 			if(type === 0){
 				updateSectionEventCount(categoryId, jsonobj.totalCount);
 			}
@@ -76,11 +78,7 @@ function updateSectionEventTab(tobeRemovedActive, tobeAddedActive){
 }
 
 function updateSectionEventCount(categoryId, CategoryCount){
-	if(categoryId == 0){
-		document.querySelector("#category_count").innerText = tobeAddedActive.getAttribute("data-count");
-	} else {
 		document.querySelector("#category_count").innerText = CategoryCount.toString() + "개";
-	}
 }
 
 function updateSectionEventBox(productDescriptions){
@@ -103,8 +101,8 @@ function updateSectionEventBox(productDescriptions){
 	});
 }
 
-function clearBox(Box){
-	while(Box.hasChildNodes()){
-		Box.removeChild(Box.firstChild);
+function clearBox(box){
+	while(box.hasChildNodes()){
+		box.removeChild(box.firstChild);
 	}
 }
