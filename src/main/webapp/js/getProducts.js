@@ -17,6 +17,7 @@ anchorClass.addEventListener('click', function(event){
 		clearBox(rightBox);
 		getFourProductUsingAjax(0, categoryId);
 	}
+	document.querySelector(".more").style.display="block";
 }, false);
 
 moreButton.addEventListener('click', function(event){
@@ -51,6 +52,10 @@ function getFourProductUsingAjax(type, categoryId){
 			var jsonobj = JSON.parse(this.responseText);
 			if(type === 0){
 				updateSectionEventCount(categoryId, jsonobj.totalCount);
+			} else if(type === 1){
+				if(currentStartPoint >= jsonobj.totalCount) {
+					document.querySelector(".more").style.display="none";
+				}
 			}
 			updateSectionEventBox(jsonobj.items);
 		}
@@ -61,6 +66,8 @@ function getFourProductUsingAjax(type, categoryId){
 	xmlReq.send();
 	
 	currentStartPoint += 4;
+	
+	
 }
 
 
