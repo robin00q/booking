@@ -26,12 +26,18 @@ public class ProductApiDao {
 	
 	public List<ProductApiDto> SelectProductsApi(int categoryId, int start){
 		Map<String, Integer> params = new HashMap<>();
-		params.put("categoryId", categoryId);
 		params.put("start", start);
+		if(categoryId == 0) {
+			return jdbc.query(ProductApiDaoSqls.SELECT_ALL_PRODUCTS_API, params, rowMapper);			
+		}
+		params.put("categoryId", categoryId);
 		return jdbc.query(ProductApiDaoSqls.SELECT_PRODUCTS_API, params, rowMapper);
 	}
 	
 	public int SelectProductCountByCategory(int categoryId) {
+		if(categoryId == 0) {
+			return jdbc.queryForObject(ProductApiDaoSqls.SELECT_ALL_PRODUCT_COUNT_BY_CATEGORY, Collections.emptyMap(), Integer.class);
+		}
 		Map<String, Integer> params = Collections.singletonMap("categoryId", categoryId);
 		return jdbc.queryForObject(ProductApiDaoSqls.SELECT_PRODUCT_COUNT_BY_CATEGORY, params, Integer.class);
 		

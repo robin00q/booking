@@ -28,8 +28,6 @@ function GetCategoryIdByClickedPosition(anchorClass, event){
 		
 		var categoryId = tobeAddedActive.getAttribute("data-category");
 		
-		if(categoryId === '0') categoryId = 1;
-		
 		return categoryId;
 	}
 }
