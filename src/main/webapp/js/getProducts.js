@@ -90,15 +90,12 @@ function updateSectionEventCount(categoryId, CategoryCount){
 
 function updateSectionEventBox(productDescriptions){
 	var itemTemplate = document.querySelector("#itemListforTest").innerHTML;
+	var bindTemplate = Handlebars.compile(itemTemplate);
 	var count = 0;
+	
 	productDescriptions.forEach(function(item){
-		var resultHTML = "";
-		resultHTML = itemTemplate.replace("{description}", item.productDescription)
-								.replace("{id}", item.displayInfoId)
-								.replace("{placeName}", item.placeName)
-								.replace("{content}", item.productContent)
-								.replace("{imageUrl}", item.productImageUrl)
-								.replace("{descriptionSpan}", item.productDescription);
+		var resultHTML = bindTemplate(item);
+		
 		if(count % 2){
 			leftBox.insertAdjacentHTML('beforeend', resultHTML);
 		} else {
@@ -107,6 +104,27 @@ function updateSectionEventBox(productDescriptions){
 		count++;
 	});
 }
+
+//function updateSectionEventBox(productDescriptions){
+//	var itemTemplate = document.querySelector("#itemListforTest").innerHTML;
+//	var count = 0;
+//	productDescriptions.forEach(function(item){
+//		var resultHTML = "";
+//		alert(item);
+//		resultHTML = itemTemplate.replace("{description}", item.productDescription)
+//								.replace("{id}", item.displayInfoId)
+//								.replace("{placeName}", item.placeName)
+//								.replace("{content}", item.productContent)
+//								.replace("{imageUrl}", item.productImageUrl)
+//								.replace("{descriptionSpan}", item.productDescription);
+//		if(count % 2){
+//			leftBox.insertAdjacentHTML('beforeend', resultHTML);
+//		} else {
+//			rightBox.insertAdjacentHTML('beforeend', resultHTML);
+//		}
+//		count++;
+//	});
+//}
 
 function clearBox(box){
 	while(box.hasChildNodes()){
