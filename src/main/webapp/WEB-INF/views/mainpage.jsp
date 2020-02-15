@@ -139,7 +139,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous"></script>
     <script src="js/promotionSlider.js"></script>
-    <script src="js/getProducts.js"></script>
+    <script src="js/updateEventSection.js"></script>
 </body>
 
 </html>
