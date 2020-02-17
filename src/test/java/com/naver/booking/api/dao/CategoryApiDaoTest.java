@@ -19,6 +19,7 @@ class CategoryApiDaoTest {
 	@Autowired
 	ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
 	
+	@Autowired
 	CategoryApiDao categoryApiDao = ac.getBean(CategoryApiDao.class);
 
 	@Test

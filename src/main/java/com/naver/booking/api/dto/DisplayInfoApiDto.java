@@ -1,5 +1,7 @@
 package com.naver.booking.api.dto;
 
+import java.time.LocalDateTime;
+
 public class DisplayInfoApiDto {
 
 	private int 	productId;
@@ -16,15 +18,15 @@ public class DisplayInfoApiDto {
 	private String 	telephone;
 	private String 	homepage;
 	private String 	email;
-	private String	createDate;
-	private String 	modifyDate;
-	
+	private LocalDateTime	createDate;
+	private LocalDateTime 	modifyDate;
+
 	public DisplayInfoApiDto() {}
 	
 	public DisplayInfoApiDto(int productId, int categoryId, int displayInfoId, String categoryName,
 			String productDescription, String productContent, String productEvent, String openingHours,
 			String placeName, String placeLot, String placeStreet, String telephone, String homepage, String email,
-			String createDate, String modifyDate) {
+			LocalDateTime createDate, LocalDateTime modifyDate) {
 		this.productId = productId;
 		this.categoryId = categoryId;
 		this.displayInfoId = displayInfoId;
@@ -156,19 +158,19 @@ public class DisplayInfoApiDto {
 		this.email = email;
 	}
 
-	public String getCreateDate() {
+	public LocalDateTime getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(String createDate) {
+	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
 
-	public String getModifyDate() {
+	public LocalDateTime getModifyDate() {
 		return modifyDate;
 	}
 
-	public void setModifyDate(String modifyDate) {
+	public void setModifyDate(LocalDateTime modifyDate) {
 		this.modifyDate = modifyDate;
 	}
 

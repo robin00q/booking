@@ -1,5 +1,8 @@
 package com.naver.booking.api.dao;
 
+import java.util.Collections;
+import java.util.Map;
+
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -19,9 +22,9 @@ public class DisplayInfoApiDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-	public DisplayInfoApiDto selectDisplayInfoApi() {
-		
-		return null;
+	public DisplayInfoApiDto selectDisplayInfoApi(int displayInfoId) {
+		Map<String, Integer> params = Collections.singletonMap("displayInfoId", displayInfoId);
+		return jdbc.queryForObject(DisplayInfoApiDaoSqls.SELECT_DISPLAY_INFO_API, params, rowMapper);
 	}
 	
 }
