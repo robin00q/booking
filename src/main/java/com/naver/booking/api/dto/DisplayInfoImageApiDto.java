@@ -2,27 +2,26 @@ package com.naver.booking.api.dto;
 
 import java.time.LocalDateTime;
 
-public class ProductImageApiDto {
-	private int 			productId;
-	private int 			productImageId;
-	private String 			type;
-	private int 			fileInfoId;
-	private String			fileName;
+public class DisplayInfoImageApiDto {
+
+	private int 			displayInfoImageId;
+	private int 			displayInfoId;
+	private int 			fileId;
+	private String 			fileName;
 	private String 			saveFileName;
-	private String			contentType;
+	private String 			contentType;
 	private boolean			deleteFlag;
 	private LocalDateTime 	createDate;
 	private LocalDateTime 	modifyDate;
 	
-	public ProductImageApiDto() {}
-	
-	public ProductImageApiDto(int productId, int productImageId, String type, int fileInfoId, String fileName,
+	public DisplayInfoImageApiDto() {}
+
+	public DisplayInfoImageApiDto(int displayInfoImageId, int displayInfoId, int fileId, String fileName,
 			String saveFileName, String contentType, boolean deleteFlag, LocalDateTime createDate,
 			LocalDateTime modifyDate) {
-		this.productId = productId;
-		this.productImageId = productImageId;
-		this.type = type;
-		this.fileInfoId = fileInfoId;
+		this.displayInfoImageId = displayInfoImageId;
+		this.displayInfoId = displayInfoId;
+		this.fileId = fileId;
 		this.fileName = fileName;
 		this.saveFileName = saveFileName;
 		this.contentType = contentType;
@@ -30,74 +29,86 @@ public class ProductImageApiDto {
 		this.createDate = createDate;
 		this.modifyDate = modifyDate;
 	}
-	public int getProductId() {
-		return productId;
+
+	public int getDisplayInfoImageId() {
+		return displayInfoImageId;
 	}
-	public void setProductId(int productId) {
-		this.productId = productId;
+
+	public void setDisplayInfoImageId(int displayInfoImageId) {
+		this.displayInfoImageId = displayInfoImageId;
 	}
-	public int getProductImageId() {
-		return productImageId;
+
+	public int getDisplayInfoId() {
+		return displayInfoId;
 	}
-	public void setProductImageId(int productImageId) {
-		this.productImageId = productImageId;
+
+	public void setDisplayInfoId(int displayInfoId) {
+		this.displayInfoId = displayInfoId;
 	}
-	public String getType() {
-		return type;
+
+	public int getFileId() {
+		return fileId;
 	}
-	public void setType(String type) {
-		this.type = type;
+
+	public void setFileId(int fileId) {
+		this.fileId = fileId;
 	}
-	public int getFileInfoId() {
-		return fileInfoId;
-	}
-	public void setFileInfoId(int fileInfoId) {
-		this.fileInfoId = fileInfoId;
-	}
+
 	public String getFileName() {
 		return fileName;
 	}
+
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+
 	public String getSaveFileName() {
 		return saveFileName;
 	}
+
 	public void setSaveFileName(String saveFileName) {
 		this.saveFileName = saveFileName;
 	}
+
 	public String getContentType() {
 		return contentType;
 	}
+
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}
-	public boolean getDeleteFlag() {
+
+	public boolean isDeleteFlag() {
 		return deleteFlag;
 	}
+
 	public void setDeleteFlag(boolean deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
+
 	public LocalDateTime getCreateDate() {
 		return createDate;
 	}
+
 	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
+
 	public LocalDateTime getModifyDate() {
 		return modifyDate;
 	}
+
 	public void setModifyDate(LocalDateTime modifyDate) {
 		this.modifyDate = modifyDate;
 	}
+
 	@Override
 	public String toString() {
-		return "ProductImageApiDto [productId=" + productId + ", productImageId=" + productImageId + ", type=" + type
-				+ ", fileInfoId=" + fileInfoId + ", fileName=" + fileName + ", saveFileName=" + saveFileName
-				+ ", contentType=" + contentType + ", deleteFlag=" + deleteFlag + ", createDate=" + createDate
-				+ ", modifyDate=" + modifyDate + "]";
+		return "DisplayInfoImageApiDto [displayInfoImageId=" + displayInfoImageId + ", displayInfoId=" + displayInfoId
+				+ ", fileId=" + fileId + ", fileName=" + fileName + ", saveFileName=" + saveFileName + ", contentType="
+				+ contentType + ", deleteFlag=" + deleteFlag + ", createDate=" + createDate + ", modifyDate="
+				+ modifyDate + "]";
 	}
-	
 	
 	
 	

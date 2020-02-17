@@ -7,25 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.naver.booking.api.dto.DisplayInfoApiDto;
+import com.naver.booking.api.dto.DisplayInfoImageApiDto;
 import com.naver.booking.config.ApplicationConfiguration;
 
-class DisplayInfoApiDaoTest {
+class DisplayInfoImageApiDaoTest {
 
 	@Autowired
 	ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
 	
-	DisplayInfoApiDao displayInfoApiDao = ac.getBean(DisplayInfoApiDao.class);
+	DisplayInfoImageApiDao displayInfoImageApiDao = ac.getBean(DisplayInfoImageApiDao.class);
 	
 	@Test
-	void testSelectDisplayInfoApi() {
-		int displayInfoId = 1;
+	void testDisplayInfoImageApiDao() {
+		int displayInfoId = 45;
 		
-		DisplayInfoApiDto displayInfoApiDto = displayInfoApiDao.selectDisplayInfoApi(displayInfoId);
+		DisplayInfoImageApiDto displayInfoImageApiDto = displayInfoImageApiDao.selectDisplayInfoImageApi(displayInfoId);
 		
-		System.out.println(displayInfoApiDto.toString());
+		System.out.println(displayInfoImageApiDto);
 		
-		assertNotNull(displayInfoApiDto);
+		assertNotNull(displayInfoImageApiDto);
 	}
 
 }
