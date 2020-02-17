@@ -3,120 +3,106 @@ package com.naver.booking.api.dto;
 import java.time.LocalDateTime;
 
 public class ProductImageApiDto {
-	private int 			product_id;
-	private int 			product_image_id;
+	private int 			productId;
+	private int 			productImageId;
 	private String 			type;
-	private int 			file_info_id;
-	private String			file_name;
-	private String 			save_file_name;
-	private String			content_type;
-	private int				delete_flag;
-	private LocalDateTime 	current_date;
-	private LocalDateTime 	modify_date;
+	private int 			fileInfoId;
+	private String			fileName;
+	private String 			saveFileName;
+	private String			contentType;
+	private String			deleteFlag;
+	private LocalDateTime 	createDate;
+	private LocalDateTime 	modifyDate;
 	
 	public ProductImageApiDto() {}
-
-	public ProductImageApiDto(int product_id, int product_image_id, String type, int file_info_id, String file_name,
-			String save_file_name, String content_type, int delete_flag, LocalDateTime current_date,
-			LocalDateTime modify_date) {
-		this.product_id = product_id;
-		this.product_image_id = product_image_id;
+	
+	public ProductImageApiDto(int productId, int productImageId, String type, int fileInfoId, String fileName,
+			String saveFileName, String contentType, String deleteFlag, LocalDateTime createDate,
+			LocalDateTime modifyDate) {
+		this.productId = productId;
+		this.productImageId = productImageId;
 		this.type = type;
-		this.file_info_id = file_info_id;
-		this.file_name = file_name;
-		this.save_file_name = save_file_name;
-		this.content_type = content_type;
-		this.delete_flag = delete_flag;
-		this.current_date = current_date;
-		this.modify_date = modify_date;
+		this.fileInfoId = fileInfoId;
+		this.fileName = fileName;
+		this.saveFileName = saveFileName;
+		this.contentType = contentType;
+		this.deleteFlag = deleteFlag;
+		this.createDate = createDate;
+		this.modifyDate = modifyDate;
 	}
-
-	public int getProduct_id() {
-		return product_id;
+	public int getProductId() {
+		return productId;
 	}
-
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
-
-	public int getProduct_image_id() {
-		return product_image_id;
+	public int getProductImageId() {
+		return productImageId;
 	}
-
-	public void setProduct_image_id(int product_image_id) {
-		this.product_image_id = product_image_id;
+	public void setProductImageId(int productImageId) {
+		this.productImageId = productImageId;
 	}
-
 	public String getType() {
 		return type;
 	}
-
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	public int getFile_info_id() {
-		return file_info_id;
+	public int getFileInfoId() {
+		return fileInfoId;
 	}
-
-	public void setFile_info_id(int file_info_id) {
-		this.file_info_id = file_info_id;
+	public void setFileInfoId(int fileInfoId) {
+		this.fileInfoId = fileInfoId;
 	}
-
-	public String getFile_name() {
-		return file_name;
+	public String getFileName() {
+		return fileName;
 	}
-
-	public void setFile_name(String file_name) {
-		this.file_name = file_name;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
-
-	public String getSave_file_name() {
-		return save_file_name;
+	public String getSaveFileName() {
+		return saveFileName;
 	}
-
-	public void setSave_file_name(String save_file_name) {
-		this.save_file_name = save_file_name;
+	public void setSaveFileName(String saveFileName) {
+		this.saveFileName = saveFileName;
 	}
-
-	public String getContent_type() {
-		return content_type;
+	public String getContentType() {
+		return contentType;
 	}
-
-	public void setContent_type(String content_type) {
-		this.content_type = content_type;
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
 	}
-
-	public int getDelete_flag() {
-		return delete_flag;
+	public String getDeleteFlag() {
+		return deleteFlag;
 	}
-
-	public void setDelete_flag(int delete_flag) {
-		this.delete_flag = delete_flag;
+	public void setDeleteFlag(int deleteFlag) {
+		if(deleteFlag == 0) {
+			this.deleteFlag = "false";
+		} else {
+			this.deleteFlag = "true";
+		}
 	}
-
-	public LocalDateTime getCurrent_date() {
-		return current_date;
+	public LocalDateTime getCreateDate() {
+		return createDate;
 	}
-
-	public void setCurrent_date(LocalDateTime current_date) {
-		this.current_date = current_date;
+	public void setCreateDate(LocalDateTime createDate) {
+		this.createDate = createDate;
 	}
-
-	public LocalDateTime getModify_date() {
-		return modify_date;
+	public LocalDateTime getModifyDate() {
+		return modifyDate;
 	}
-
-	public void setModify_date(LocalDateTime modify_date) {
-		this.modify_date = modify_date;
+	public void setModifyDate(LocalDateTime modifyDate) {
+		this.modifyDate = modifyDate;
 	}
-
 	@Override
 	public String toString() {
-		return "ProductImageApiDto [product_id=" + product_id + ", product_image_id=" + product_image_id + ", type="
-				+ type + ", file_info_id=" + file_info_id + ", file_name=" + file_name + ", save_file_name="
-				+ save_file_name + ", content_type=" + content_type + ", delete_flag=" + delete_flag + ", current_date="
-				+ current_date + ", modify_date=" + modify_date + "]";
+		return "ProductImageApiDto [productId=" + productId + ", productImageId=" + productImageId + ", type=" + type
+				+ ", fileInfoId=" + fileInfoId + ", fileName=" + fileName + ", saveFileName=" + saveFileName
+				+ ", contentType=" + contentType + ", deleteFlag=" + deleteFlag + ", createDate=" + createDate
+				+ ", modifyDate=" + modifyDate + "]";
 	}
+	
+	
+	
 	
 }
