@@ -41,5 +41,3 @@ public class DisplayInfoApiDaoSqls {
 
 	
 }
-
-//productId, categoryName, desc, content, event
