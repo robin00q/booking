@@ -125,7 +125,7 @@
     </script>
     <script type="rv-template" id="itemListforTest">
         <li class="item">
-            <a href="./detail" class="item_book">
+            <a href="./detail/{{displayInfoId}}" class="item_book">
                 <div class="item_preview">
                     <img alt="{{productDescription}}" class="img_thumb" src="{{productImageUrl}}">
                     <span class="img_border"></span>
