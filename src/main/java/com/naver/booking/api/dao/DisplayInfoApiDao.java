@@ -22,8 +22,8 @@ public class DisplayInfoApiDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-	public DisplayInfoApiDto selectDisplayInfoApi(int displayInfoId) {
-		Map<String, Integer> params = Collections.singletonMap("displayInfoId", displayInfoId);
+	public DisplayInfoApiDto selectDisplayInfoApi(long displayInfoId) {
+		Map<String, Long> params = Collections.singletonMap("displayInfoId", displayInfoId);
 		return jdbc.queryForObject(DisplayInfoApiDaoSqls.SELECT_DISPLAY_INFO_API, params, rowMapper);
 	}
 	

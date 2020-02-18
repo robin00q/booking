@@ -6,7 +6,8 @@ import com.naver.booking.api.dto.ProductApiDto;
 
 public interface ProductApiService {
 
-	public List<ProductApiDto> getProductsApi(int categoryId, int start);
-	public int getProductCountByCategory(int categoryId);
+	/* /api/products? */
+	public List<ProductApiDto> getProductsApi(Long categoryId, Long start);
+	public Long getProductCountByCategory(Long categoryId);
 	
 }

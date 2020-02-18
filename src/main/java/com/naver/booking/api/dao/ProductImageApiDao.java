@@ -23,8 +23,8 @@ public class ProductImageApiDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-	public List<ProductImageApiDto> selectProductImageApi(int productId){
-		Map<String, Integer> params = Collections.singletonMap("productId", productId);
+	public List<ProductImageApiDto> selectProductImageApi(Long productId){
+		Map<String, Long> params = Collections.singletonMap("productId", productId);
 		return jdbc.query(ProductImageApiDaoSqls.SELECT_PRODUCT_IMAGE_API, params, rowMapper);
 	}
 	

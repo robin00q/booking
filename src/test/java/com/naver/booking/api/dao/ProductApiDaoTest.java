@@ -26,8 +26,8 @@ class ProductApiDaoTest {
 	void testSelectProductsJoinProductDisplayInfo() {
 		List<ProductApiDto> productApiDtoList = new ArrayList<ProductApiDto>();
 
-		int categoryId = 0;
-		int start = 0;
+		Long categoryId = (long) 0;
+		Long start = (long) 0;
 		
 		productApiDtoList = productApiDao.SelectProductsApi(categoryId, start);
 
@@ -40,9 +40,9 @@ class ProductApiDaoTest {
 	
 	@Test
 	void testSelectProductCountByCategory() {
-		int categoryId = 0;
+		Long categoryId = (long) 0;
 		
-		int CategoryCount = productApiDao.SelectProductCountByCategory(categoryId);
+		Long CategoryCount = productApiDao.SelectProductCountByCategory(categoryId);
 		
 		System.out.println(CategoryCount);
 		

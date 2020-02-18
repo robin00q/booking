@@ -16,12 +16,12 @@ public class ProductApiServiceImpl implements ProductApiService {
 	ProductApiDao productApiDao;
 
 	@Override
-	public List<ProductApiDto> getProductsApi(int categoryId, int start) {
+	public List<ProductApiDto> getProductsApi(Long categoryId, Long start) {
 		return productApiDao.SelectProductsApi(categoryId, start);
 	}
 
 	@Override
-	public int getProductCountByCategory(int categoryId) {
+	public Long getProductCountByCategory(Long categoryId) {
 		return productApiDao.SelectProductCountByCategory(categoryId);
 	}
 	

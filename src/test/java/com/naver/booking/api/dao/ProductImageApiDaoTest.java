@@ -22,7 +22,9 @@ class ProductImageApiDaoTest {
 	@Test
 	void testSelectProductImageApi() {
 		
-		List<ProductImageApiDto> productImageApiDtoList = productImageApiDao.selectProductImageApi(39);
+		Long productId = (long) 39;
+		
+		List<ProductImageApiDto> productImageApiDtoList = productImageApiDao.selectProductImageApi(productId);
 		
 		for (ProductImageApiDto productImageApiDto : productImageApiDtoList) {
 			System.out.println(productImageApiDto);

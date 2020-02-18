@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 import com.naver.booking.api.dao.AverageScoreApiDao;
 import com.naver.booking.api.dao.CommentApiDao;
 import com.naver.booking.api.dao.DisplayInfoApiDao;
+import com.naver.booking.api.dao.DisplayInfoImageApiDao;
 import com.naver.booking.api.dao.ProductImageApiDao;
 import com.naver.booking.api.dao.ProductPriceApiDao;
 import com.naver.booking.api.dto.CommentApiDto;
 import com.naver.booking.api.dto.DisplayInfoApiDto;
+import com.naver.booking.api.dto.DisplayInfoImageApiDto;
 import com.naver.booking.api.dto.ProductImageApiDto;
 import com.naver.booking.api.dto.ProductPriceApiDto;
 import com.naver.booking.api.service.ProductDisplayInfoIdService;
@@ -24,6 +26,9 @@ public class ProductDisplayInfoIdServiceImpl implements ProductDisplayInfoIdServ
 	
 	@Autowired
 	ProductImageApiDao productImageApiDao;
+	
+	@Autowired
+	DisplayInfoImageApiDao displayInfoImageApiDao;
 	
 	@Autowired
 	CommentApiDao commentApiDao;
@@ -45,6 +50,11 @@ public class ProductDisplayInfoIdServiceImpl implements ProductDisplayInfoIdServ
 	}
 
 	@Override
+	public DisplayInfoImageApiDto getDisplayInfoImageApi(long displayInfoId) {
+		return displayInfoImageApiDao.selectDisplayInfoImageApi(displayInfoId);
+	}
+	
+	@Override
 	public List<CommentApiDto> getCommentsApi() {
 		return null;
 	}
@@ -58,5 +68,6 @@ public class ProductDisplayInfoIdServiceImpl implements ProductDisplayInfoIdServ
 	public List<ProductPriceApiDto> getProductPriceApi(Long productId) {
 		return productPriceApiDao.SelectProductPriceApi(productId);
 	}
+
 
 }
