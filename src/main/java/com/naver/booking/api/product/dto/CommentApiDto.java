@@ -1,6 +1,7 @@
 package com.naver.booking.api.product.dto;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CommentApiDto {
@@ -17,7 +18,9 @@ public class CommentApiDto {
     private LocalDateTime 		modifyDate;
     private List<CommentImageApiDto> 	commentImages;
 	
-    public CommentApiDto() {}
+    public CommentApiDto() {
+    	this.commentImages = new ArrayList<CommentImageApiDto>();
+    }
 
 	public CommentApiDto(int commentId, int productId, int reservationInfoId, int score, String comment,
 			String reservationName, String reservationTelephone, String reservationEmail, LocalDateTime reservationDate,
@@ -129,8 +132,12 @@ public class CommentApiDto {
 		return commentImages;
 	}
 
-	public void setCommentImages(List<CommentImageApiDto> commentImages) {
-		this.commentImages = commentImages;
+//	public void setCommentImages(List<CommentImageApiDto> commentImages) {
+//		this.commentImages = commentImages;
+//	}
+//	
+	public void setCommentImages(CommentImageApiDto commentImages) {
+		this.commentImages.add(commentImages);
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package com.naver.booking.api.dao;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.List;
 
@@ -21,22 +20,10 @@ class CommentApiDaoTest {
 	
 	CommentApiDao commentApiDao = ac.getBean(CommentApiDao.class);
 
-	@Test
-	void testSelectCommentApi() {
-		
-		List<CommentApiDto> commentApiDtoList = commentApiDao.SelectCommentApi();
-		
-		for (CommentApiDto commentApiDto : commentApiDtoList) {
-			System.out.println(commentApiDto);
-		}
-		
-		assertNotNull(commentApiDtoList);
-	}
-	
 //	@Test
-//	void testSelectCommentApiWithComments() {
+//	void testSelectCommentApi() {
 //		
-//		List<CommentApiDto> commentApiDtoList = commentApiDao.SelectCommentApiWithComments();
+//		List<CommentApiDto> commentApiDtoList = commentApiDao.SelectCommentApi();
 //		
 //		for (CommentApiDto commentApiDto : commentApiDtoList) {
 //			System.out.println(commentApiDto);
@@ -44,5 +31,17 @@ class CommentApiDaoTest {
 //		
 //		assertNotNull(commentApiDtoList);
 //	}
+	
+	@Test
+	void testSelectCommentApiWithComments() {
+		
+		List<CommentApiDto> commentApiDtoList = commentApiDao.SelectCommentApiWithComments();
+		
+		for (CommentApiDto commentApiDto : commentApiDtoList) {
+			System.out.println(commentApiDto);
+		}
+		
+		assertNotNull(commentApiDtoList);
+	}
 
 }
