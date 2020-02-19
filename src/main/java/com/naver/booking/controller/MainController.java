@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.naver.booking.api.dto.PromotionApiDto;
-import com.naver.booking.api.service.PromotionApiService;
+import com.naver.booking.api.promotion.dto.PromotionApiDto;
+import com.naver.booking.api.promotion.service.PromotionApiService;
 import com.naver.booking.dto.CategoryDto;
 import com.naver.booking.service.CategoryService;
 

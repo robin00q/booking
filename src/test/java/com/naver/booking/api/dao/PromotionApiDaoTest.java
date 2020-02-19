@@ -10,9 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.naver.booking.api.dao.PromotionApiDao;
-import com.naver.booking.api.dto.PromotionApiDto;
-import com.naver.booking.api.service.PromotionApiService;
+import com.naver.booking.api.promotion.dao.PromotionApiDao;
+import com.naver.booking.api.promotion.dto.PromotionApiDto;
 import com.naver.booking.config.ApplicationConfiguration;
 
 class PromotionApiDaoTest {
@@ -30,7 +29,7 @@ class PromotionApiDaoTest {
 		
 		for (PromotionApiDto promotionApiDto : promotionApiDtoList) {
 			System.out.println(promotionApiDto);
-		}
+		}                                               
 		
 		
 		assertNotNull(promotionApiDtoList);

@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.naver.booking.api.dao.CategoryApiDao;
-import com.naver.booking.api.dto.CategoryApiDto;
+import com.naver.booking.api.category.dao.CategoryApiDao;
+import com.naver.booking.api.category.dto.CategoryApiDto;
 import com.naver.booking.config.ApplicationConfiguration;
 
 class CategoryApiDaoTest {

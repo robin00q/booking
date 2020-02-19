@@ -12,7 +12,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.naver.booking.controller", "com.naver.booking.api.controller"})
+@ComponentScan(basePackages = {
+		"com.naver.booking.api.category.controller",
+		"com.naver.booking.api.product.controller",
+		"com.naver.booking.api.promotion.controller",
+		"com.naver.booking.controller", 
+		})
 public class WebMvcContextConfiguration implements WebMvcConfigurer {
 	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

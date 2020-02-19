@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.naver.booking.api.dto.ProductPriceApiDto;
+import com.naver.booking.api.product.dao.ProductPriceApiDao;
+import com.naver.booking.api.product.dto.ProductPriceApiDto;
 import com.naver.booking.config.ApplicationConfiguration;
 
 class ProductPriceApiDaoTest {

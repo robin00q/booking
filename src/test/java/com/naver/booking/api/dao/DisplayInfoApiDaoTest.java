@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.naver.booking.api.dto.DisplayInfoApiDto;
+import com.naver.booking.api.product.dao.DisplayInfoApiDao;
+import com.naver.booking.api.product.dto.DisplayInfoApiDto;
 import com.naver.booking.config.ApplicationConfiguration;
 
 class DisplayInfoApiDaoTest {
