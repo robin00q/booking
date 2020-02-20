@@ -32,16 +32,16 @@ public class CommentApiDaoSqls {
 			"	reservation_info.reservation_date AS reservation_date," + 
 			"	reservation_user_comment.create_date AS create_date," + 
 			"	reservation_user_comment.modify_date AS modify_date," + 
-			"	display_info_image.id AS image_id," +
-			"	reservation_user_comment_image.reservation_info_id AS reservation_info_id," + 
-			"	reservation_user_comment_image.reservation_user_comment_id AS reservation_user_comment_id," + 
-			"	file_info.id AS file_id," + 
-			"	file_info.file_name AS file_name," + 
-			"	file_info.save_file_name AS save_file_name," + 
-			"	file_info.content_type AS content_type," + 
-			"	file_info.delete_flag AS delete_flag," + 
-			"	file_info.create_date AS create_date," + 
-			"	file_info.modify_date AS modify_date " + 
+			"	display_info_image.id AS comment_images_image_id," +
+			"	reservation_user_comment_image.reservation_info_id AS comment_images_reservation_info_id," + 
+			"	reservation_user_comment_image.reservation_user_comment_id AS comment_images_reservation_user_comment_id," + 
+			"	file_info.id AS comment_images_file_id," + 
+			"	file_info.file_name AS comment_images_file_name," + 
+			"	file_info.save_file_name AS comment_images_save_file_name," + 
+			"	file_info.content_type AS comment_images_content_type," + 
+			"	file_info.delete_flag AS comment_images_delete_flag," + 
+			"	file_info.create_date AS comment_images_create_date," + 
+			"	file_info.modify_date AS comment_images_modify_date " + 
 			"FROM" + 
 			"	reservation_user_comment " + 
 			"INNER JOIN" + 
@@ -59,7 +59,11 @@ public class CommentApiDaoSqls {
 			"LEFT JOIN" + 
 			"	display_info_image " + 
 			"ON" + 
-			"	file_info.id = display_info_image.file_id";
+			"	file_info.id = display_info_image.file_id " +
+			"WHERE" +
+			"	reservation_user_comment.product_id = :productId " +
+			"ORDER BY" +
+			"	comment_id DESC";
 	
 //	public static final String SELECT_COMMENT_API_WITH_COMMENTS = 
 //			"SELECT * " + 

@@ -2,15 +2,17 @@ package com.naver.booking.api.product.dto;
 
 import java.time.LocalDateTime;
 
+import com.naver.booking.util.TimeFormatter;
+
 public class CommentImageApiDto {
 
 	private int 			imageId;
 	private int 			reservationInfoId;
 	private int 			reservationUserCommentId;
 	private int 			fileId;
-	private String 		fileName;
-	private String 		saveFileName;
-	private String 		contentType;
+	private String 			fileName;
+	private String 			saveFileName;
+	private String 			contentType;
 	private boolean 		deleteFlag;
 	private LocalDateTime 	createDate;
 	private LocalDateTime 	modifyDate;
@@ -97,16 +99,16 @@ public class CommentImageApiDto {
 		this.deleteFlag = deleteFlag;
 	}
 
-	public LocalDateTime getCreateDate() {
-		return createDate;
+	public String getCreateDate() {
+		return TimeFormatter.LocalDateTimeFormatter(createDate);
 	}
 
 	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
 
-	public LocalDateTime getModifyDate() {
-		return modifyDate;
+	public String getModifyDate() {
+		return TimeFormatter.LocalDateTimeFormatter(modifyDate);
 	}
 
 	public void setModifyDate(LocalDateTime modifyDate) {

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.naver.booking.api.product.dto.CommentApiDto;
 import com.naver.booking.api.product.dto.DisplayInfoApiDto;
 import com.naver.booking.api.product.dto.DisplayInfoImageApiDto;
 import com.naver.booking.api.product.dto.ProductApiDto;
@@ -55,6 +56,8 @@ public class ProductApiController {
 		
 		DisplayInfoImageApiDto displayInfoImageApiDto = productDisplayInfoIdService.getDisplayInfoImageApi(displayInfoId);
 		
+		List<CommentApiDto> commentApiDtoList = productDisplayInfoIdService.getCommentsApi(productId);
+		
 		double averageScore = productDisplayInfoIdService.getAverageScore(productId);
 		
 		List<ProductPriceApiDto> productPriceApiDtoList = productDisplayInfoIdService.getProductPriceApi(productId);
@@ -63,6 +66,7 @@ public class ProductApiController {
 		
 		ApiMap.put("displayInfo", displayInfoApiDto);
 		ApiMap.put("displayInfoImage", displayInfoImageApiDto);
+		ApiMap.put("comments", commentApiDtoList);
 		ApiMap.put("productImages", productImageApiDtoList);
 		ApiMap.put("averageScore", averageScore);
 		ApiMap.put("productPrices", productPriceApiDtoList);

@@ -19,23 +19,11 @@ class CommentApiDaoTest {
 	ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
 	
 	CommentApiDao commentApiDao = ac.getBean(CommentApiDao.class);
-
-//	@Test
-//	void testSelectCommentApi() {
-//		
-//		List<CommentApiDto> commentApiDtoList = commentApiDao.SelectCommentApi();
-//		
-//		for (CommentApiDto commentApiDto : commentApiDtoList) {
-//			System.out.println(commentApiDto);
-//		}
-//		
-//		assertNotNull(commentApiDtoList);
-//	}
 	
 	@Test
 	void testSelectCommentApiWithComments() {
 		
-		List<CommentApiDto> commentApiDtoList = commentApiDao.SelectCommentApiWithComments();
+		List<CommentApiDto> commentApiDtoList = commentApiDao.SelectCommentApiWithComments((long) 1);
 		
 		for (CommentApiDto commentApiDto : commentApiDtoList) {
 			System.out.println(commentApiDto);

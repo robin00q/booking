@@ -55,8 +55,8 @@ public class ProductDisplayInfoIdServiceImpl implements ProductDisplayInfoIdServ
 	}
 	
 	@Override
-	public List<CommentApiDto> getCommentsApi() {
-		return null;
+	public List<CommentApiDto> getCommentsApi(Long productId) {
+		return commentApiDao.SelectCommentApiWithComments(productId);
 	}
 
 	@Override

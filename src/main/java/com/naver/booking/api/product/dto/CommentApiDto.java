@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.naver.booking.util.TimeFormatter;
+
 public class CommentApiDto {
 	private int 				commentId;
 	private int 				productId;
@@ -13,7 +15,7 @@ public class CommentApiDto {
 	private String 				reservationName;
 	private String 				reservationTelephone;
 	private String 				reservationEmail;
-    private LocalDateTime 		reservationDate;
+    private LocalDateTime		reservationDate;
     private LocalDateTime 		createDate;
     private LocalDateTime 		modifyDate;
     private List<CommentImageApiDto> 	commentImages;
@@ -104,24 +106,24 @@ public class CommentApiDto {
 		this.reservationEmail = reservationEmail;
 	}
 
-	public LocalDateTime getReservationDate() {
-		return reservationDate;
+	public String getReservationDate() {
+		return TimeFormatter.LocalDateTimeFormatter(reservationDate);
 	}
 
 	public void setReservationDate(LocalDateTime reservationDate) {
 		this.reservationDate = reservationDate;
 	}
 
-	public LocalDateTime getCreateDate() {
-		return createDate;
+	public String getCreateDate() {
+		return TimeFormatter.LocalDateTimeFormatter(createDate);
 	}
 
 	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
 
-	public LocalDateTime getModifyDate() {
-		return modifyDate;
+	public String getModifyDate() {
+		return TimeFormatter.LocalDateTimeFormatter(modifyDate);
 	}
 
 	public void setModifyDate(LocalDateTime modifyDate) {
@@ -132,11 +134,11 @@ public class CommentApiDto {
 		return commentImages;
 	}
 
-//	public void setCommentImages(List<CommentImageApiDto> commentImages) {
-//		this.commentImages = commentImages;
-//	}
-//	
-	public void setCommentImages(CommentImageApiDto commentImages) {
+	public void setCommentImages(List<CommentImageApiDto> commentImages) {
+		this.commentImages = commentImages;
+	}
+	
+	public void addCommentImages(CommentImageApiDto commentImages) {
 		this.commentImages.add(commentImages);
 	}
 
