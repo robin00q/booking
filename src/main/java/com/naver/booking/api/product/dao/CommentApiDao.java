@@ -25,14 +25,9 @@ import com.naver.booking.util.TimeFormatter;
 public class CommentApiDao {
 
 	private NamedParameterJdbcTemplate jdbc;
-	private RowMapper<CommentApiDto> rowMapper = BeanPropertyRowMapper.newInstance(CommentApiDto.class);
 
 	public CommentApiDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
-	}
-	
-	public List<CommentApiDto> SelectCommentApi(){
-		return jdbc.query(CommentApiDaoSqls.SELECT_COMMENT_API, rowMapper);
 	}
 	
 	public List<CommentApiDto> SelectCommentApiWithComments(Long productId){
@@ -46,8 +41,6 @@ public class CommentApiDao {
 				
 				while(rs.next()) {
 					Integer reservationInfoId = rs.getInt("reservation_info_id");
-					
-					System.out.println(reservationInfoId);
 					
 					CommentApiDto commentApiDto = commentApiDtoMap.get(reservationInfoId);
 					
