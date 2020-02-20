@@ -7,17 +7,17 @@ import java.util.List;
 import com.naver.booking.util.TimeFormatter;
 
 public class CommentApiDto {
-	private int 				commentId;
-	private int 				productId;
-	private int 				reservationInfoId;
-	private int 				score;
-	private String 				comment;
-	private String 				reservationName;
-	private String 				reservationTelephone;
-	private String 				reservationEmail;
-    private LocalDateTime		reservationDate;
-    private LocalDateTime 		createDate;
-    private LocalDateTime 		modifyDate;
+	private int 						commentId;
+	private int 						productId;
+	private int 						reservationInfoId;
+	private int 						score;
+	private String 						comment;
+	private String 						reservationName;
+	private String 						reservationTelephone;
+	private String 						reservationEmail;
+    private LocalDateTime				reservationDate;
+    private LocalDateTime 				createDate;
+    private LocalDateTime 				modifyDate;
     private List<CommentImageApiDto> 	commentImages;
 	
     public CommentApiDto() {

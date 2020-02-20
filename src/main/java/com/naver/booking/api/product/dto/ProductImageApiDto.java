@@ -2,6 +2,8 @@ package com.naver.booking.api.product.dto;
 
 import java.time.LocalDateTime;
 
+import com.naver.booking.util.TimeFormatter;
+
 public class ProductImageApiDto {
 	private int 			productId;
 	private int 			productImageId;
@@ -78,14 +80,14 @@ public class ProductImageApiDto {
 	public void setDeleteFlag(boolean deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
-	public LocalDateTime getCreateDate() {
-		return createDate;
+	public String getCreateDate() {
+		return TimeFormatter.LocalDateTimeFormatter(createDate);
 	}
 	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
-	public LocalDateTime getModifyDate() {
-		return modifyDate;
+	public String getModifyDate() {
+		return TimeFormatter.LocalDateTimeFormatter(modifyDate);
 	}
 	public void setModifyDate(LocalDateTime modifyDate) {
 		this.modifyDate = modifyDate;
