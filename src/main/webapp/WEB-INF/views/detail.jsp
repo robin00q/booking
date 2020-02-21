@@ -42,14 +42,17 @@
                         <div class="bg_pagination"></div>
                         <div class="figure_pagination">
                             <span class="num">1</span>
-                            <span class="num off">/ <span>2</span></span>
+                            <span class="num off" id="page_size" data-count="${productImageApiDtoList.size()}">/ <span>${productImageApiDtoList.size()}</span></span>
                         </div>
                     </div>
                     <div class="group_visual">
                         <div>
                             <div class="container_visual" style="width: 414px;">
                                 <ul class="visual_img detail_swipe">
-                                    <li class="item" style="width: 414px;"> <img alt="" class="img_thumb" src=""> <span class="img_bg"></span>
+                                	<c:forEach items="${productImageApiDtoList}" var="productImageApiDtoList">
+                                    <li class="item" style="width: 414px;"> 
+                                    	<img alt="product_image" class="img_thumb" src="${pageContext.request.contextPath}/${productImageApiDtoList.getSaveFileName()}"> 
+                                    	<span class="img_bg"></span>
                                         <div class="visual_txt">
                                             <div class="visual_txt_inn">
                                                 <h2 class="visual_txt_tit"> <span></span> </h2>
@@ -57,36 +60,13 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="item" style="width: 414px;"> <img alt="" class="img_thumb" src=""> <span class="img_bg"></span>
-                                        <div class="visual_txt">
-                                            <div class="visual_txt_inn">
-                                                <h2 class="visual_txt_tit"> <span></span> </h2>
-                                                <p class="visual_txt_dsc"></p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="item" style="width: 414px;"> <img alt="" class="img_thumb" src=""> <span class="img_bg"></span>
-                                        <div class="visual_txt">
-                                            <div class="visual_txt_inn">
-                                                <h2 class="visual_txt_tit"> <span></span> </h2>
-                                                <p class="visual_txt_dsc"></p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="item" style="width: 414px;"> <img alt="" class="img_thumb" src=""> <span class="img_bg"></span>
-                                        <div class="visual_txt">
-                                            <div class="visual_txt_inn">
-                                                <h2 class="visual_txt_tit"> <span></span> </h2>
-                                                <p class="visual_txt_dsc"></p>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    </c:forEach>
                                 </ul>
                             </div>
-                            <div class="prev">
+                            <!-- <div class="prev">
                                 <div class="prev_inn">
                                     <a href="#" class="btn_prev" title="이전">
-                                        <!-- [D] 첫 이미지 이면 off 클래스 추가 -->
+                                        [D] 첫 이미지 이면 off 클래스 추가
                                         <i class="spr_book2 ico_arr6_lt off"></i>
                                     </a>
                                 </div>
@@ -97,7 +77,7 @@
                                         <i class="spr_book2 ico_arr6_rt"></i>
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="group_btn_goto"  style="display: none;">
@@ -262,6 +242,24 @@
         </div>
     </footer>
     <div id="photoviwer"></div>
+    <script type="rv-template" id="num_off_button">
+        <div class="prev">
+			<div class="prev_inn">
+            <a href="#" class="btn_prev" title="이전">
+            <!-- [D] 첫 이미지 이면 off 클래스 추가 -->
+            <i class="spr_book2 ico_arr6_lt off"></i>
+            </a>
+            </div>
+        </div>
+        <div class="nxt">
+        	<div class="nxt_inn">
+            	<a href="#" class="btn_nxt" title="다음">
+                	<i class="spr_book2 ico_arr6_rt"></i>
+                </a>
+            </div>
+        </div>
+    </script>
+    <script src="${pageContext.request.contextPath}/js/DetailView.js"></script>
 </body>
 
 
