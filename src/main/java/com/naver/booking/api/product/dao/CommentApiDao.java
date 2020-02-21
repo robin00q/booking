@@ -60,20 +60,23 @@ public class CommentApiDao {
 						commentApiDtoMap.put(reservationInfoId, commentApiDto);
 					} 
 					
-					CommentImageApiDto commentImageApiDto = new CommentImageApiDto();
+					if(rs.getInt("comment_images_image_id") != 0) {
+						CommentImageApiDto commentImageApiDto = new CommentImageApiDto();
+						
+						commentImageApiDto.setImageId(rs.getInt("comment_images_image_id"));
+						commentImageApiDto.setReservationInfoId(rs.getInt("comment_images_reservation_info_id"));
+						commentImageApiDto.setReservationUserCommentId(rs.getInt("comment_images_reservation_user_comment_id"));
+						commentImageApiDto.setFileId(rs.getInt("comment_images_file_id"));
+						commentImageApiDto.setFileName(rs.getString("comment_images_file_name"));
+						commentImageApiDto.setSaveFileName(rs.getString("comment_images_save_file_name"));
+						commentImageApiDto.setContentType(rs.getString("comment_images_content_type"));
+						commentImageApiDto.setDeleteFlag(rs.getBoolean("comment_images_delete_flag"));
+						commentImageApiDto.setCreateDate(TimeFormatter.DateToLocalDateTime(rs.getTimestamp("comment_images_create_date")));
+						commentImageApiDto.setModifyDate(TimeFormatter.DateToLocalDateTime(rs.getTimestamp("comment_images_modify_date")));
+						
+						commentApiDto.addCommentImages(commentImageApiDto);
+					}
 					
-					commentImageApiDto.setImageId(rs.getInt("comment_images_image_id"));
-					commentImageApiDto.setReservationInfoId(rs.getInt("comment_images_reservation_info_id"));
-					commentImageApiDto.setReservationUserCommentId(rs.getInt("comment_images_reservation_user_comment_id"));
-					commentImageApiDto.setFileId(rs.getInt("comment_images_file_id"));
-					commentImageApiDto.setFileName(rs.getString("comment_images_file_name"));
-					commentImageApiDto.setSaveFileName(rs.getString("comment_images_save_file_name"));
-					commentImageApiDto.setContentType(rs.getString("comment_images_content_type"));
-					commentImageApiDto.setDeleteFlag(rs.getBoolean("comment_images_delete_flag"));
-					commentImageApiDto.setCreateDate(TimeFormatter.DateToLocalDateTime(rs.getTimestamp("comment_images_create_date")));
-					commentImageApiDto.setModifyDate(TimeFormatter.DateToLocalDateTime(rs.getTimestamp("comment_images_modify_date")));
-					
-					commentApiDto.addCommentImages(commentImageApiDto);
 				}
 			
 				List<CommentApiDto> commentApiDtoArrayList = new ArrayList<CommentApiDto>(commentApiDtoMap.values());
