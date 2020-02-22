@@ -56,7 +56,7 @@
                                         <div class="visual_txt">
                                             <div class="visual_txt_inn">
                                                 <h2 class="visual_txt_tit"> <span></span> </h2>
-                                                <p class="visual_txt_dsc"></p>
+                                                <p class="visual_txt_dsc">${displayInfoApiDto.getProductDescription()}</p>
                                             </div>
                                         </div>
                                     </li>
@@ -77,6 +77,7 @@
                     <!-- [D] 펼쳐보기 클릭 시 store_details에 close3 제거 -->
                     <div class="store_details close3">
                         <p class="dsc">
+                        	${displayInfoApiDto.getProductContent()}
                         </p>
                     </div>
                     <!-- [D] 토글 상황에 따라 bk_more에 display:none 추가 -->

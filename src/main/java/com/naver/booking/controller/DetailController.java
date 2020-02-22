@@ -30,6 +30,7 @@ public class DetailController {
 		
 		List<ProductImageApiDto> productImageApiDtoList = productImageApiDao.selectProductImageApi((long) productId);
 		
+		modelMap.put("displayInfoApiDto", displayInfoApiDto);
 		modelMap.put("productImageApiDtoList", productImageApiDtoList);
 		
 		return "detail";
