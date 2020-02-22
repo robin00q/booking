@@ -46,9 +46,9 @@
                         </div>
                     </div>
                     <div class="group_visual">
-                        <div>
+                        <div id = "image_visual_wrapper">
                             <div class="container_visual" style="width: 414px;">
-                                <ul class="visual_img detail_swipe">
+                                <ul class="visual_img detail_swipe" id="slide_images" current-point="0">
                                 	<c:forEach items="${productImageApiDtoList}" var="productImageApiDtoList">
                                     <li class="item" style="width: 414px;"> 
                                     	<img alt="product_image" class="img_thumb" src="${pageContext.request.contextPath}/${productImageApiDtoList.getSaveFileName()}"> 
@@ -63,21 +63,6 @@
                                     </c:forEach>
                                 </ul>
                             </div>
-                            <!-- <div class="prev">
-                                <div class="prev_inn">
-                                    <a href="#" class="btn_prev" title="이전">
-                                        [D] 첫 이미지 이면 off 클래스 추가
-                                        <i class="spr_book2 ico_arr6_lt off"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="nxt">
-                                <div class="nxt_inn">
-                                    <a href="#" class="btn_nxt" title="다음">
-                                        <i class="spr_book2 ico_arr6_rt"></i>
-                                    </a>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                     <div class="group_btn_goto"  style="display: none;">
@@ -245,10 +230,9 @@
     <script type="rv-template" id="num_off_button">
         <div class="prev">
 			<div class="prev_inn">
-            <a href="#" class="btn_prev" title="이전">
-            <!-- [D] 첫 이미지 이면 off 클래스 추가 -->
-            <i class="spr_book2 ico_arr6_lt off"></i>
-            </a>
+            	<a href="#" class="btn_prev" title="이전">
+            		<i class="spr_book2 ico_arr6_lt off"></i>
+            	</a>
             </div>
         </div>
         <div class="nxt">
