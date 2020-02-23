@@ -50,6 +50,7 @@ public class CommentApiDao {
 						commentApiDto.setProductId(rs.getInt("product_id"));
 						commentApiDto.setReservationInfoId(rs.getInt("reservation_info_id"));
 						commentApiDto.setScore(rs.getInt("score"));
+						commentApiDto.setComment(rs.getString("comment"));
 						commentApiDto.setReservationName(rs.getString("reservation_name"));
 						commentApiDto.setReservationTelephone(rs.getString("reservation_telephone"));
 						commentApiDto.setReservationEmail(rs.getString("reservation_email"));
