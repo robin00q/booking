@@ -22,7 +22,11 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public double getAverageScore(long productId) {
-		return commentDao.selectAverageScore(productId);
+		Double averageScore = commentDao.selectAverageScore(productId);
+		if(averageScore == null) {
+			return 0.0;
+		}
+		return averageScore;
 	}
 
 }
