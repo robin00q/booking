@@ -12,12 +12,17 @@ import com.naver.booking.api.product.dto.CommentApiDto;
 import com.naver.booking.api.product.dto.DisplayInfoApiDto;
 import com.naver.booking.api.product.dto.ProductImageApiDto;
 import com.naver.booking.api.product.service.ProductDisplayInfoIdService;
+import com.naver.booking.dto.CommentDto;
+import com.naver.booking.service.CommentService;
 
 @Controller
 public class DetailController {
 	
 	@Autowired
 	ProductDisplayInfoIdService productDisplayInfoIdService;
+	
+	@Autowired
+	CommentService commentService;
 	
 	@GetMapping(path="/detail/{displayInfoId}")
 	public String detailPage(@PathVariable("displayInfoId") Long displayInfoId, ModelMap modelMap) {
@@ -27,11 +32,13 @@ public class DetailController {
 		
 		List<ProductImageApiDto> productImageApiDtoList = productDisplayInfoIdService.getProductImageApi((long) productId);
 		
-		List<CommentApiDto> commentApiDtoList = productDisplayInfoIdService.getCommentsApi((long) productId);
+		List<CommentDto> commentDtoList = commentService.getThreeComment(productId);
+		double averageScore = commentService.getAverageScore(productId);
 		
 		modelMap.put("displayInfoApiDto", displayInfoApiDto);
 		modelMap.put("productImageApiDtoList", productImageApiDtoList);
-		modelMap.put("commentApiDtoList", commentApiDtoList);
+		modelMap.put("commentDtoList", commentDtoList);
+		modelMap.put("averageScore", averageScore);
 		
 		return "detail";
 	}

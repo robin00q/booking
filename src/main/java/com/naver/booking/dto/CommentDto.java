@@ -57,7 +57,7 @@ public class CommentDto {
 	}
 
 	public String getReservationDate() {
-		return TimeFormatter.LocalDateTimeFormatter(reservationDate);
+		return (TimeFormatter.LocalDateTimeFormatter(reservationDate)).substring(0, 10);
 	}
 
 	public void setReservationDate(LocalDateTime reservationDate) {

@@ -2,6 +2,7 @@ package com.naver.booking.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,5 +46,10 @@ public class CommentDao {
 			}
 			
 		});
+	}
+	
+	public Double selectAverageScore(long productId) {
+		Map<String, Object> params = Collections.singletonMap("productId",  productId);
+		return jdbc.queryForObject(CommentDaoSqls.SELECT_AVERAGE_SCORE, params, Double.class);
 	}
 }

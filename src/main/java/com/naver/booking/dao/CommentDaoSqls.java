@@ -33,4 +33,12 @@ public class CommentDaoSqls {
 			"ORDER BY" +
 			"	comment_id DESC " +
 			"LIMIT :limit";
+	
+	public static final String SELECT_AVERAGE_SCORE = 
+			"SELECT" +
+			"	AVG(score) " +
+			"FROM" +
+			"	reservation_user_comment " +
+			"WHERE " +
+			"	product_id = :productId";
 }

@@ -20,7 +20,7 @@ class CommentDaoTest {
 	CommentDao commentDao = ac.getBean(CommentDao.class);
 	
 	@Test
-	void testselectThreeComent() {
+	void testSelectThreeComent() {
 		long productId = 1;
 		List<CommentDto> commentDtoList = commentDao.selectThreeComent(productId);
 		
@@ -29,6 +29,16 @@ class CommentDaoTest {
 		}
 		
 		assertNotNull(commentDtoList);
+	}
+	
+	@Test
+	void testSelectAverageScore() {
+		long productId = 2;
+		Double averageScore = commentDao.selectAverageScore(productId);
+		
+		System.out.println(averageScore);
+		
+		assertNotNull(averageScore);
 	}
 
 }

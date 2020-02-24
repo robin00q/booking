@@ -101,31 +101,31 @@
                         <div class="short_review_area">
                             <div class="grade_area">
                                 <!-- [D] 별점 graph_value는 퍼센트 환산하여 width 값을 넣어줌 -->
-                                <span class="graph_mask"> <em class="graph_value" style="width: 84%;"></em> </span>
-                                <strong class="text_value"> <span>4.2</span> <em class="total">5.0</em> </strong>
-                                <span class="join_count"><em class="green">52건</em> 등록</span>
+                                <span class="graph_mask"> <em class="graph_value" style="width: ${averageScore*20}%;"></em> </span>
+                                <strong class="text_value"> <span>${averageScore}</span> <em class="total">5.0</em> </strong>
+                                <span class="join_count"><em class="green">${commentDtoList.size()}건</em> 등록</span>
                             </div>
                             <ul class="list_short_review">
-                            	<c:forEach items="${commentApiDtoList}" var="commentApiDtoList">
+                            	<c:forEach items="${commentDtoList}" var="commentDtoList">
                             	<li class="list_item">
                                     <div>
                                         <div class="review_area">
-                                			<c:if test="${commentApiDtoList.getCommentImages().size() > 0}">        	
+                                			<c:if test="${commentDtoList.getSaveFileName() != null}">        	
                                             <div class="thumb_area">
                                                 <a href="" class="thumb" title="이미지 크게 보기"> 
-                                                	<img width="90" height="90" class="img_vertical_top" src="${pageContext.request.contextPath}/${commentApiDtoList.getCommentImages()[0].getSaveFileName()}" alt=""> 
+                                                	<img width="90" height="90" class="img_vertical_top" src="${pageContext.request.contextPath}/${commentDtoList.getSaveFileName()}" alt=""> 
                                                 </a> 
                                                 <span class="img_count" style="display:none;">1</span>
                                             </div>
                                             </c:if>
                                             <h4 class="resoc_name"></h4>
-                                            <p class="review">${commentApiDtoList.getComment()}</p>
+                                            <p class="review">${commentDtoList.getComment()}</p>
                                         </div>
                                         <div class="info_area">
                                             <div class="review_info"> 
-                                            	<span class="grade">${commentApiDtoList.getReservationEmail()}</span> 
-                                            	<span class="name">${commentApiDtoList.getScore()}</span> 
-                                            	<span class="date">${commentApiDtoList.getReservationDate()} 방문</span> 
+                                            	<span class="grade">${commentDtoList.getReservationEmail()}</span> 
+                                            	<span class="name">${commentDtoList.getScore()}</span> 
+                                            	<span class="date">${commentDtoList.getReservationDate()} 방문</span> 
                                             </div>
                                         </div>
                                     </div>
