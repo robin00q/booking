@@ -52,6 +52,14 @@
                                 <li class="list_item">
                                     <div>
                                         <div class="review_area no_img">
+                                        	<c:if test="${commentDtoList.getSaveFileName() != null}">
+                                        	<div class="thumb_area">
+                                                <a href="#" class="thumb" title="이미지 크게 보기"> 
+                                                	<img width="90" height="90" class="img_vertical_top" src="${pageContext.request.contextPath}/${commentDtoList.getSaveFileName()}" alt=""> 
+                                                </a> 
+                                                <span class="img_count">1</span>                                                
+                                            </div>
+                                            </c:if>
                                             <h4 class="resoc_name">뮤지컬_드림걸즈(DREAMGIRLS)_최초_내한</h4>
                                             <p class="review">${commentDtoList.getComment()}</p>
                                         </div>
