@@ -8,7 +8,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.naver.booking.api.product.dto.CommentApiDto;
 import com.naver.booking.api.product.dto.DisplayInfoApiDto;
 import com.naver.booking.api.product.dto.ProductImageApiDto;
 import com.naver.booking.api.product.service.ProductDisplayInfoIdService;
@@ -34,6 +33,7 @@ public class DetailController {
 		
 		List<CommentDto> commentDtoList = commentService.getThreeComment(productId);
 		double averageScore = commentService.getAverageScore(productId);
+		averageScore = Math.round(averageScore*10)/10.0;
 		
 		modelMap.put("displayInfoApiDto", displayInfoApiDto);
 		modelMap.put("productImageApiDtoList", productImageApiDtoList);

@@ -48,6 +48,27 @@ public class CommentDao {
 		});
 	}
 	
+	public List<CommentDto> selectComment(long productId){
+		Map<String, Object> params = Collections.singletonMap("productId",  productId);
+		
+		return jdbc.query(CommentDaoSqls.SELECT_COMMENT, params, new RowMapper<CommentDto>(){
+
+			@Override
+			public CommentDto mapRow(ResultSet rs, int rowNum) throws SQLException {
+				CommentDto commentDto = new CommentDto();
+				
+				commentDto.setComment(rs.getString("comment"));
+				commentDto.setSaveFileName(rs.getString("save_file_name"));
+				commentDto.setReservationEmail(rs.getString("reservation_email"));
+				commentDto.setScore(rs.getDouble("score"));
+				commentDto.setReservationDate(TimeFormatter.DateToLocalDateTime(rs.getTimestamp("reservation_date")));
+				
+				return commentDto;
+			}
+			
+		});
+	}
+	
 	public Double selectAverageScore(long productId) {
 		Map<String, Object> params = Collections.singletonMap("productId",  productId);
 		return jdbc.queryForObject(CommentDaoSqls.SELECT_AVERAGE_SCORE, params, Double.class);

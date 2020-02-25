@@ -21,6 +21,11 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
+	public List<CommentDto> getComment(long productId) {
+		return commentDao.selectComment(productId);
+	}
+
+	@Override
 	public double getAverageScore(long productId) {
 		Double averageScore = commentDao.selectAverageScore(productId);
 		if(averageScore == null) {
@@ -28,5 +33,6 @@ public class CommentServiceImpl implements CommentService {
 		}
 		return averageScore;
 	}
+
 
 }

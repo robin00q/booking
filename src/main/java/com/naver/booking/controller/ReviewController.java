@@ -20,8 +20,9 @@ public class ReviewController {
 	@GetMapping(path="/review/{productId}")
 	public String reviewPage(@PathVariable("productId") Long productId, ModelMap modelMap) {
 		
-		List<CommentDto> commentDtoList = commentService.getThreeComment(productId);
+		List<CommentDto> commentDtoList = commentService.getComment(productId);
 		double averageScore = commentService.getAverageScore(productId);
+		averageScore = Math.round(averageScore*10)/10.0;
 		
 		modelMap.put("commentDtoList", commentDtoList);
 		modelMap.put("averageScore", averageScore);
