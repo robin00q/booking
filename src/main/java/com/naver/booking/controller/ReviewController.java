@@ -22,8 +22,12 @@ public class ReviewController {
 		
 		List<CommentDto> commentDtoList = commentService.getComment(productId);
 		double averageScore = commentService.getAverageScore(productId);
+		String description = commentService.getDescriptionByProductId(productId);
+		
 		averageScore = Math.round(averageScore*10)/10.0;
 		
+		modelMap.put("productId", productId);
+		modelMap.put("description", description);
 		modelMap.put("commentDtoList", commentDtoList);
 		modelMap.put("averageScore", averageScore);
 
