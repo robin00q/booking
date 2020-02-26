@@ -32,6 +32,18 @@ class CommentDaoTest {
 	}
 	
 	@Test
+	void testSelectComent() {
+		long productId = 1;
+		List<CommentDto> commentDtoList = commentDao.selectComment(productId);
+		
+		for (CommentDto commentDto : commentDtoList) {
+			System.out.println(commentDto);
+		}
+		
+		assertNotNull(commentDtoList);
+	}
+	
+	@Test
 	void testSelectAverageScore() {
 		long productId = 2;
 		Double averageScore = commentDao.selectAverageScore(productId);
@@ -39,6 +51,16 @@ class CommentDaoTest {
 		System.out.println(averageScore);
 		
 		assertNotNull(averageScore);
+	}
+	
+	@Test
+	void testSelectDescriptionByProductId() {
+		long productId = 2;
+		String description = commentDao.selectDescriptionByProductId(productId);
+		
+		System.out.println(description);
+		
+		assertNotNull(description);
 	}
 
 }

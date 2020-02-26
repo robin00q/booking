@@ -73,4 +73,9 @@ public class CommentDao {
 		Map<String, Object> params = Collections.singletonMap("productId",  productId);
 		return jdbc.queryForObject(CommentDaoSqls.SELECT_AVERAGE_SCORE, params, Double.class);
 	}
+	
+	public String selectDescriptionByProductId(long productId) {
+		Map<String, Object> params = Collections.singletonMap("productId",  productId);
+		return jdbc.queryForObject(CommentDaoSqls.SELECT_DESCRIPTION_BY_PRODUCT_ID, params, String.class);
+	}
 }

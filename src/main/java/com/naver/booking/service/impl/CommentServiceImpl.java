@@ -34,5 +34,10 @@ public class CommentServiceImpl implements CommentService {
 		return averageScore;
 	}
 
+	@Override
+	public String getDescriptionByProductId(long productId) {
+		return commentDao.selectDescriptionByProductId(productId);
+	}
+
 
 }

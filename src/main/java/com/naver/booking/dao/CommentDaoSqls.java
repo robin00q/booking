@@ -73,4 +73,13 @@ public class CommentDaoSqls {
 			"	reservation_user_comment " +
 			"WHERE " +
 			"	product_id = :productId";
+	
+	public static final String SELECT_DESCRIPTION_BY_PRODUCT_ID = 
+			"SELECT" +
+			"	description " +
+			"FROM" +
+			"	product " +
+			"WHERE" +
+			"	id = :productId";
+		
 }
