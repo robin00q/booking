@@ -2,6 +2,7 @@ package com.naver.booking.dto;
 
 import java.time.LocalDateTime;
 
+import com.naver.booking.util.EmailHidder;
 import com.naver.booking.util.TimeFormatter;
 
 public class CommentDto {
@@ -46,6 +47,10 @@ public class CommentDto {
 
 	public void setReservationEmail(String reservationEmail) {
 		this.reservationEmail = reservationEmail;
+	}
+	
+	public String getHiddenReservationEmail() {
+		return EmailHidder.emailHidder(reservationEmail);
 	}
 
 	public double getScore() {

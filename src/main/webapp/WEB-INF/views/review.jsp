@@ -66,7 +66,7 @@
                                         <div class="info_area">
                                             <div class="review_info"> 
                                             	<span class="grade">${commentDtoList.getScore()}</span> 
-                                            	<span class="name">vida****</span>
+                                            	<span class="name">${commentDtoList.getHiddenReservationEmail()}</span>
 												<span class="date">${commentDtoList.getReservationDate()} 방문</span> 
 											</div>
                                         </div>

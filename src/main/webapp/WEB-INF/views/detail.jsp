@@ -123,7 +123,7 @@
                                         </div>
                                         <div class="info_area">
                                             <div class="review_info"> 
-                                            	<span class="grade">${commentDtoList.getReservationEmail()}</span> 
+                                            	<span class="grade">${commentDtoList.getHiddenReservationEmail()}</span> 
                                             	<span class="name">${commentDtoList.getScore()}</span> 
                                             	<span class="date">${commentDtoList.getReservationDate()} 방문</span> 
                                             </div>
