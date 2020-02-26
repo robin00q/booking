@@ -8,11 +8,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.naver.booking.api.product.dto.DisplayInfoApiDto;
 import com.naver.booking.api.product.dto.ProductImageApiDto;
 import com.naver.booking.api.product.service.ProductDisplayInfoIdService;
 import com.naver.booking.dto.CommentDto;
+import com.naver.booking.dto.ProductDto;
 import com.naver.booking.service.CommentService;
+import com.naver.booking.service.ProductService;
 
 @Controller
 public class DetailController {
@@ -21,13 +22,15 @@ public class DetailController {
 	ProductDisplayInfoIdService productDisplayInfoIdService;
 	
 	@Autowired
+	ProductService ProductService;
+	
+	@Autowired
 	CommentService commentService;
 	
-	@GetMapping(path="/detail/{displayInfoId}")
-	public String detailPage(@PathVariable("displayInfoId") Long displayInfoId, ModelMap modelMap) {
+	@GetMapping(path="/detail/{productId}")
+	public String detailPage(@PathVariable("productId") Long productId, ModelMap modelMap) {
 		
-		DisplayInfoApiDto displayInfoApiDto = productDisplayInfoIdService.getDisplayInfoApi(displayInfoId);
-		int productId = displayInfoApiDto.getProductId();
+		ProductDto productDto = ProductService.getProductByProductId(productId);
 		
 		List<ProductImageApiDto> productImageApiDtoList = productDisplayInfoIdService.getProductImageApi((long) productId);
 		
@@ -35,7 +38,7 @@ public class DetailController {
 		double averageScore = commentService.getAverageScore(productId);
 		averageScore = Math.round(averageScore*10)/10.0;
 		
-		modelMap.put("displayInfoApiDto", displayInfoApiDto);
+		modelMap.put("productDto", productDto);
 		modelMap.put("productImageApiDtoList", productImageApiDtoList);
 		modelMap.put("commentDtoList", commentDtoList);
 		modelMap.put("averageScore", averageScore);

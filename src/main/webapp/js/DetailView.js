@@ -18,25 +18,29 @@ var visualizeNumOffButton = {
 var addSlideButtonEventListener = {
 	
 	slidePrev : function(slideImages){
-		document.querySelector(".prev_inn").addEventListener('click', function(evemt){
-		    var current = parseInt(slideImages.getAttribute('current-point'));
-		    if(current === -50){
-		    	document.querySelector(".figure_pagination > span").innerText = 1;
-		    	slideImages.setAttribute('current-point', (current+50));
-		    	slideImages.style.transform = "translateX(" + (current+50) + "%)";
-		    }
-		}, false)
+		if(document.querySelector(".prev_inn") !== null){
+			document.querySelector(".prev_inn").addEventListener('click', function(evemt){
+			    var current = parseInt(slideImages.getAttribute('current-point'));
+			    if(current === -50){
+			    	document.querySelector(".figure_pagination > span").innerText = 1;
+			    	slideImages.setAttribute('current-point', (current+50));
+			    	slideImages.style.transform = "translateX(" + (current+50) + "%)";
+			    }
+			}, false)
+		}
 	},
 
 	slideNext : function(slideImages){
-		document.querySelector(".nxt_inn").addEventListener('click', function(evemt){
-		    var current = parseInt(slideImages.getAttribute('current-point'));
-		    if(current === 0){
-		    	document.querySelector(".figure_pagination > span").innerText = 2;
-		    	slideImages.setAttribute('current-point', (current-50));
-		    	slideImages.style.transform = "translateX(" + (current-50) + "%)";
-		    }
-		}, false);
+		if(document.querySelector(".nxt_inn") !== null){
+			document.querySelector(".nxt_inn").addEventListener('click', function(evemt){
+				var current = parseInt(slideImages.getAttribute('current-point'));
+				if(current === 0){
+					document.querySelector(".figure_pagination > span").innerText = 2;
+					slideImages.setAttribute('current-point', (current-50));
+					slideImages.style.transform = "translateX(" + (current-50) + "%)";
+				}
+			}, false);
+		}
 	}
 }
 
