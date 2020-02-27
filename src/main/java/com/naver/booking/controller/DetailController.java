@@ -13,6 +13,7 @@ import com.naver.booking.api.product.service.ProductDisplayInfoIdService;
 import com.naver.booking.dto.CommentDto;
 import com.naver.booking.dto.ProductDto;
 import com.naver.booking.service.CommentService;
+import com.naver.booking.service.DisplayInfoImageService;
 import com.naver.booking.service.ProductService;
 
 @Controller
@@ -27,6 +28,9 @@ public class DetailController {
 	@Autowired
 	CommentService commentService;
 	
+	@Autowired
+	DisplayInfoImageService displayInfoImageService;
+	
 	@GetMapping(path="/detail/{productId}")
 	public String detailPage(@PathVariable("productId") Long productId, ModelMap modelMap) {
 		
@@ -35,10 +39,16 @@ public class DetailController {
 		List<ProductImageApiDto> productImageApiDtoList = productDisplayInfoIdService.getProductImageApi((long) productId);
 		
 		List<CommentDto> commentDtoList = commentService.getThreeComment(productId);
+		
 		double averageScore = commentService.getAverageScore(productId);
+		
+		String saveFileName = displayInfoImageService.getDisplayInfoSaveFileName(productId);
+		
 		averageScore = Math.round(averageScore*10)/10.0;
 		
+		
 		modelMap.put("productDto", productDto);
+		modelMap.put("saveFileName", saveFileName);
 		modelMap.put("productImageApiDtoList", productImageApiDtoList);
 		modelMap.put("commentDtoList", commentDtoList);
 		modelMap.put("averageScore", averageScore);
