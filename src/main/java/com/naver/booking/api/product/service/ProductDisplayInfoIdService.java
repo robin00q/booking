@@ -15,7 +15,7 @@ public interface ProductDisplayInfoIdService {
 	public List<ProductImageApiDto> getProductImageApi(Long productId);
 	public DisplayInfoImageApiDto getDisplayInfoImageApi(long displayInfoId);
 	public List<CommentApiDto> getCommentsApi(Long productId);
-	public double getAverageScore(Long productId);
+	public Double getAverageScore(Long productId);
 	public List<ProductPriceApiDto> getProductPriceApi(Long productId);
 	
 }

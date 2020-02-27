@@ -17,7 +17,7 @@ public class AverageScoreApiDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-	public double SelectReservationUserCommentAverageScore(Long productId) {
+	public Double SelectReservationUserCommentAverageScore(Long productId) {
 		Map<String, Long> params = Collections.singletonMap("productId", productId);
 		return jdbc.queryForObject(AverageScoreApiDaoSqls.SELECT_RESERVATION_USER_COMMENT_AVERAGE_SCORE, params, Double.class);
 	}

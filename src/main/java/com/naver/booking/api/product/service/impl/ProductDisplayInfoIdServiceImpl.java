@@ -60,8 +60,12 @@ public class ProductDisplayInfoIdServiceImpl implements ProductDisplayInfoIdServ
 	}
 
 	@Override
-	public double getAverageScore(Long productId) {
-		return averageScoreApiDao.SelectReservationUserCommentAverageScore(productId);
+	public Double getAverageScore(Long productId) {
+		Double AverageScore = averageScoreApiDao.SelectReservationUserCommentAverageScore(productId); 
+		if(AverageScore == null) {
+			return 0.0;
+		}
+		return AverageScore; 
 	}
 
 	@Override

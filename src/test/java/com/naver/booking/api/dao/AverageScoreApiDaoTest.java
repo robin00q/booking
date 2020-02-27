@@ -20,13 +20,13 @@ class AverageScoreApiDaoTest {
 	@Test
 	void testSelectReservationUserCommentAverageScore() {
 		
-		Long productId = (long) 1;
+		Long productId = (long) 2;
 		
 		double result = averageScoreApiDao.SelectReservationUserCommentAverageScore(productId);
 		
 		System.out.println(result);
 		
-		assertTrue(result != 0);
+		assertTrue(result != -1);
 	}
 
 }
