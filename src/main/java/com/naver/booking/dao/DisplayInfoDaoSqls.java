@@ -1,9 +1,13 @@
 package com.naver.booking.dao;
 
-public class DisplayInfoImageDaoSqls {
+public class DisplayInfoDaoSqls {
 
-	public static final String SELECT_DISPLAY_INFO_SAVE_FILE_NAME = 
+	public static final String SELECT_DISPLAY_INFO = 
 			"SELECT" + 
+			"	display_info.place_name as place_name," +
+			"	display_info.place_lot as place_lot," +
+			"	display_info.place_street as place_street," +
+			"	display_info.tel as tel," +
 			"	file_info.save_file_name as save_file_name " + 
 			"FROM" + 
 			"	file_info " + 

@@ -8,23 +8,24 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.naver.booking.config.ApplicationConfiguration;
+import com.naver.booking.dto.DisplayInfoDto;
 
-class DisplayInfoImageDaoTest {
+class DisplayInfoDaoTest {
 
 	@Autowired
 	ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
 	
-	DisplayInfoImageDao displayInfoImageDao = ac.getBean(DisplayInfoImageDao.class);
+	DisplayInfoDao displayInfoDao = ac.getBean(DisplayInfoDao.class);
 	
 	@Test
 	void testSelectDisplayInfoSaveFileName() {
 		long productId = 4;
 		
-		String saveFileName = displayInfoImageDao.selectDisplayInfoSaveFileName(productId);
+		DisplayInfoDto displayInfoDto = displayInfoDao.selectDisplayInfoSaveFileName(productId);
 		
-		System.out.println(saveFileName);
+		System.out.println(displayInfoDto);
 		
-		assertNotNull(saveFileName);
+		assertNotNull(displayInfoDto);
 	}
 
 }

@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.naver.booking.api.product.dto.ProductImageApiDto;
 import com.naver.booking.api.product.service.ProductDisplayInfoIdService;
 import com.naver.booking.dto.CommentDto;
+import com.naver.booking.dto.DisplayInfoDto;
 import com.naver.booking.dto.ProductDto;
 import com.naver.booking.service.CommentService;
-import com.naver.booking.service.DisplayInfoImageService;
+import com.naver.booking.service.DisplayInfoService;
 import com.naver.booking.service.ProductService;
 
 @Controller
@@ -29,7 +30,7 @@ public class DetailController {
 	CommentService commentService;
 	
 	@Autowired
-	DisplayInfoImageService displayInfoImageService;
+	DisplayInfoService displayInfoImageService;
 	
 	@GetMapping(path="/detail/{productId}")
 	public String detailPage(@PathVariable("productId") Long productId, ModelMap modelMap) {
@@ -42,13 +43,13 @@ public class DetailController {
 		
 		double averageScore = commentService.getAverageScore(productId);
 		
-		String saveFileName = displayInfoImageService.getDisplayInfoSaveFileName(productId);
+		DisplayInfoDto displayInfoDto = displayInfoImageService.getDisplayInfoSaveFileName(productId);
 		
 		averageScore = Math.round(averageScore*10)/10.0;
 		
 		
 		modelMap.put("productDto", productDto);
-		modelMap.put("saveFileName", saveFileName);
+		modelMap.put("displayInfoDto", displayInfoDto);
 		modelMap.put("productImageApiDtoList", productImageApiDtoList);
 		modelMap.put("commentDtoList", commentDtoList);
 		modelMap.put("averageScore", averageScore);
