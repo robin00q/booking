@@ -21,11 +21,11 @@ class ProductDaoTest {
 	@Test
 	void testSelectProductByProductId() {
 		
-		long productId = 2;
+		long displayInfoId = 52;
 		
 		ProductDto productDto = new ProductDto();
 		
-		productDto = productDao.selectProductByProductId(productId);
+		productDto = productDao.selectProductByDisplayInfoId(displayInfoId);
 		
 		System.out.println(productDto);
 				

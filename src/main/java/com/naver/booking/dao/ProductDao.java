@@ -22,8 +22,8 @@ public class ProductDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-	public ProductDto selectProductByProductId(long productId) {
-		Map<String, Long> params = Collections.singletonMap("productId", productId);
+	public ProductDto selectProductByDisplayInfoId(long displayInfoId) {
+		Map<String, Long> params = Collections.singletonMap("displayInfoId", displayInfoId);
 		return jdbc.queryForObject(ProductDaoSqls.SELECT_PRODUCT_BY_PRODUCT_ID, params, rowMapper);
 	}
 

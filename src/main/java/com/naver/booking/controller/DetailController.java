@@ -32,12 +32,14 @@ public class DetailController {
 	@Autowired
 	DisplayInfoService displayInfoImageService;
 	
-	@GetMapping(path="/detail/{productId}")
-	public String detailPage(@PathVariable("productId") Long productId, ModelMap modelMap) {
+	@GetMapping(path="/detail/{displayInfoId}")
+	public String detailPage(@PathVariable("displayInfoId") Long displayInfoId, ModelMap modelMap) {
 		
-		ProductDto productDto = ProductService.getProductByProductId(productId);
+		ProductDto productDto = ProductService.getProductByProductId(displayInfoId);
 		
-		List<ProductImageApiDto> productImageApiDtoList = productDisplayInfoIdService.getProductImageApi((long) productId);
+		long productId = productDto.getId();
+		
+		List<ProductImageApiDto> productImageApiDtoList = productDisplayInfoIdService.getProductImageApi(productId);
 		
 		List<CommentDto> commentDtoList = commentService.getThreeComment(productId);
 		
