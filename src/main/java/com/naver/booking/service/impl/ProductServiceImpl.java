@@ -14,8 +14,8 @@ public class ProductServiceImpl implements ProductService {
 	ProductDao productDao;
 	
 	@Override
-	public ProductDto getProductByProductId(long productId) {
-		return productDao.selectProductByProductId(productId);
+	public ProductDto getProductByDisplayInfoId(long displayInfoId) {
+		return productDao.selectProductByDisplayInfoId(displayInfoId);
 	}
 
 }

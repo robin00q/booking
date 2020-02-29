@@ -24,7 +24,7 @@ public class DetailController {
 	ProductDisplayInfoIdService productDisplayInfoIdService;
 	
 	@Autowired
-	ProductService ProductService;
+	ProductService productService;
 	
 	@Autowired
 	CommentService commentService;
@@ -35,8 +35,10 @@ public class DetailController {
 	@GetMapping(path="/detail/{displayInfoId}")
 	public String detailPage(@PathVariable("displayInfoId") Long displayInfoId, ModelMap modelMap) {
 		
-		ProductDto productDto = ProductService.getProductByProductId(displayInfoId);
+		ProductDto productDto = productService.getProductByDisplayInfoId(displayInfoId);
 		
+		DisplayInfoDto displayInfoDto = displayInfoImageService.getDisplayInfoSaveFileName(displayInfoId);
+
 		long productId = productDto.getId();
 		
 		List<ProductImageApiDto> productImageApiDtoList = productDisplayInfoIdService.getProductImageApi(productId);
@@ -45,7 +47,6 @@ public class DetailController {
 		
 		double averageScore = commentService.getAverageScore(productId);
 		
-		DisplayInfoDto displayInfoDto = displayInfoImageService.getDisplayInfoSaveFileName(productId);
 		
 		averageScore = Math.round(averageScore*10)/10.0;
 		

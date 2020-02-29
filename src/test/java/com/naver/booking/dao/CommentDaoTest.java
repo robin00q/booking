@@ -21,7 +21,7 @@ class CommentDaoTest {
 	
 	@Test
 	void testSelectThreeComent() {
-		long productId = 1;
+		long productId = 45;
 		List<CommentDto> commentDtoList = commentDao.selectThreeComent(productId);
 		
 		for (CommentDto commentDto : commentDtoList) {
@@ -33,7 +33,7 @@ class CommentDaoTest {
 	
 	@Test
 	void testSelectComent() {
-		long productId = 1;
+		long productId = 45;
 		List<CommentDto> commentDtoList = commentDao.selectComment(productId);
 		
 		for (CommentDto commentDto : commentDtoList) {
@@ -45,7 +45,7 @@ class CommentDaoTest {
 	
 	@Test
 	void testSelectAverageScore() {
-		long productId = 2;
+		long productId = 45;
 		Double averageScore = commentDao.selectAverageScore(productId);
 		
 		System.out.println(averageScore);
@@ -55,7 +55,7 @@ class CommentDaoTest {
 	
 	@Test
 	void testSelectDescriptionByProductId() {
-		long productId = 2;
+		long productId = 45;
 		String description = commentDao.selectDescriptionByProductId(productId);
 		
 		System.out.println(description);

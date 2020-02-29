@@ -20,5 +20,5 @@ public class DisplayInfoDaoSqls {
 			"ON" +
 			"	display_info_image.display_info_id = display_info.id " + 
 			"WHERE" +
-			"	display_info.product_id = :productId";
+			"	display_info.id = :displayInfoId";
 }

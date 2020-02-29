@@ -4,5 +4,5 @@ import com.naver.booking.dto.ProductDto;
 
 public interface ProductService {
 
-	public ProductDto getProductByProductId(long productId);
+	public ProductDto getProductByDisplayInfoId(long productId);
 }

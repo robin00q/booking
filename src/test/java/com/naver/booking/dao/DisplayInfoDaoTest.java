@@ -19,7 +19,7 @@ class DisplayInfoDaoTest {
 	
 	@Test
 	void testSelectDisplayInfoSaveFileName() {
-		long productId = 4;
+		long productId = 45;
 		
 		DisplayInfoDto displayInfoDto = displayInfoDao.selectDisplayInfoSaveFileName(productId);
 		

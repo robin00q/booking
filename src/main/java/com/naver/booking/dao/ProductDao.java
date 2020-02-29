@@ -24,7 +24,7 @@ public class ProductDao {
 	
 	public ProductDto selectProductByDisplayInfoId(long displayInfoId) {
 		Map<String, Long> params = Collections.singletonMap("displayInfoId", displayInfoId);
-		return jdbc.queryForObject(ProductDaoSqls.SELECT_PRODUCT_BY_PRODUCT_ID, params, rowMapper);
+		return jdbc.queryForObject(ProductDaoSqls.SELECT_PRODUCT_BY_DISPLAY_INFO_ID, params, rowMapper);
 	}
 
 }

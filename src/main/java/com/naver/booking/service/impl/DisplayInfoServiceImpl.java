@@ -14,8 +14,8 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 	DisplayInfoDao displayInfoImageDao; 
 	
 	@Override
-	public DisplayInfoDto getDisplayInfoSaveFileName(long productId) {
-		return displayInfoImageDao.selectDisplayInfoSaveFileName(productId);
+	public DisplayInfoDto getDisplayInfoSaveFileName(long displayInfoId) {
+		return displayInfoImageDao.selectDisplayInfoSaveFileName(displayInfoId);
 	}
 
 }

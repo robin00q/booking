@@ -22,8 +22,8 @@ public class DisplayInfoDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-	public DisplayInfoDto selectDisplayInfoSaveFileName(Long productId) {
-		Map<String, Long> params = Collections.singletonMap("productId",  productId);
+	public DisplayInfoDto selectDisplayInfoSaveFileName(Long displayInfoId) {
+		Map<String, Long> params = Collections.singletonMap("displayInfoId",  displayInfoId);
 		return jdbc.queryForObject(DisplayInfoDaoSqls.SELECT_DISPLAY_INFO, params, rowMapper);
 	}
 }

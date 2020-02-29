@@ -4,5 +4,5 @@ import com.naver.booking.dto.DisplayInfoDto;
 
 public interface DisplayInfoService {
 
-	public DisplayInfoDto getDisplayInfoSaveFileName(long productId);
+	public DisplayInfoDto getDisplayInfoSaveFileName(long displayInfoId);
 }
