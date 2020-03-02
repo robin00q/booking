@@ -33,9 +33,9 @@
                 <div class="group_visual">
                     <div class="container_visual" style="width: 414px;">
                         <ul class="visual_img">
-                            <li class="item" style="width: 414px;"> <img alt="" class="img_thumb" src="https://ssl.phinf.net/naverbooking/20170217_264/1487312141947lTddT_JPEG/%B3%D7%C0%CC%B9%F6.jpg?type=ff1242_816"> <span class="img_bg"></span>
+                            <li class="item" style="width: 414px;"> <img alt="" class="img_thumb" src="${pageContext.request.contextPath}/${displayInfoImageDto.getSaveFileName()}"> <span class="img_bg"></span>
                                 <div class="preview_txt">
-                                    <h2 class="preview_txt_tit"></h2> <em class="preview_txt_dsc">₩12,000 ~ </em><em class="preview_txt_dsc">2017.2.17.(금)~2017.4.18.(화), 잔여티켓 2769매</em> </div>
+                                    <h2 class="preview_txt_tit"></h2> <em class="preview_txt_dsc">₩12,000 ~ </em><em class="preview_txt_dsc">${displayInfoImageDto.getOpeningHours()}</em> </div>
                             </li>
                         </ul>
                     </div>
@@ -44,11 +44,11 @@
                     <div class="store_details">
                         <h3 class="in_tit"></h3>
                         <p class="dsc">
-                            장소 : <br> 기간 : 2017.2.17.(금)~2017.4.18.(화)
+                            장소 : ${displayInfoImageDto.getPlaceStreet()}<br><br>
                         </p>
                         <h3 class="in_tit">관람시간</h3>
                         <p class="dsc">
-                            화, 목, 금 일요일 10:00am~06:00pm(입장마감 05:30pm)<br> ‘문화가 있는 날’ 매월 마지막 주 수요일은 오후 8시까지 연장
+                            ${displayInfoImageDto.getOpeningHours()}<br> ‘문화가 있는 날’ 매월 마지막 주 수요일은 오후 8시까지 연장
                         </p>
                         <h3 class="in_tit">요금</h3>
                         <p class="dsc">
