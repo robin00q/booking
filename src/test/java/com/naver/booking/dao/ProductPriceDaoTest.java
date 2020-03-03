@@ -12,6 +12,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.naver.booking.config.ApplicationConfiguration;
 import com.naver.booking.dto.ProductPriceDto;
+import com.naver.booking.util.PriceFomatter;
 
 class ProductPriceDaoTest {
 
@@ -31,6 +32,7 @@ class ProductPriceDaoTest {
 		
 		for (ProductPriceDto productPriceDto : productPriceDtoList) {
 			System.out.println(productPriceDto);
+			System.out.println(PriceFomatter.priceFormat(productPriceDto.getPrice()));
 		}
 		
 		

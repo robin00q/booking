@@ -34,8 +34,8 @@
                     <div class="container_visual" style="width: 414px;">
                         <ul class="visual_img">
                             <li class="item" style="width: 414px;"> <img alt="" class="img_thumb" src="${pageContext.request.contextPath}/${displayInfoImageDto.getSaveFileName()}"> <span class="img_bg"></span>
-                                <div class="preview_txt">
-                                    <h2 class="preview_txt_tit"></h2> <em class="preview_txt_dsc">₩12,000 ~ </em><em class="preview_txt_dsc">${displayInfoImageDto.getOpeningHours()}</em> </div>
+                                <%-- <div class="preview_txt">
+                                    <h2 class="preview_txt_tit"></h2> <em class="preview_txt_dsc">₩${productPriceDtoList[productPriceDtoList.size()-1].getFormattedPrice()} ~ </em><em class="preview_txt_dsc">${displayInfoImageDto.getOpeningHours()}</em> </div> --%>
                             </li>
                         </ul>
                     </div>
@@ -48,11 +48,14 @@
                         </p>
                         <h3 class="in_tit">관람시간</h3>
                         <p class="dsc">
-                            ${displayInfoImageDto.getOpeningHours()}<br> ‘문화가 있는 날’ 매월 마지막 주 수요일은 오후 8시까지 연장
+                            ${displayInfoImageDto.getOpeningHours()}<br><br> ‘문화가 있는 날’ 매월 마지막 주 수요일은 오후 8시까지 연장
                         </p>
                         <h3 class="in_tit">요금</h3>
                         <p class="dsc">
-                            성인(만 19~64세) 5,000원 / 청소년(만 13~18세) 4,000원<br> 어린이(만 4~12세) 3,000원 / 20인 이상 단체 20% 할인<br> 국가유공자, 장애인, 65세 이상 4,000원
+                        <c:forEach items="${productPriceDtoList}" var="productPriceDtoList">
+                        	타입 : ${productPriceDtoList.getPriceTypeName()} 가격 : ${productPriceDtoList.getFormattedPrice()}원<br>
+                        </c:forEach>
+                            <!-- 성인(만 19~64세) 5,000원 / 청소년(만 13~18세) 4,000원<br> 어린이(만 4~12세) 3,000원 / 20인 이상 단체 20% 할인<br> 국가유공자, 장애인, 65세 이상 4,000원 -->
                         </p>
                     </div>
                 </div>

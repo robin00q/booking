@@ -12,5 +12,8 @@ public class ProductPriceDaoSqls {
 			"FROM" +
 			"	product_price " +
 			"WHERE " +
-			"	product_id = :productId";
+			"	product_id = :productId " +
+			"ORDER BY" + 
+			"	price " +
+			"DESC";
 }

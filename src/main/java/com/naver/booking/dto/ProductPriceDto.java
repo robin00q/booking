@@ -1,53 +1,75 @@
 package com.naver.booking.dto;
 
+import com.naver.booking.util.PriceFomatter;
+
 public class ProductPriceDto {
 
 	private long id;
 	private long productId;
-	private char price_type_name;
+	private char priceTypeName;
 	private long price;
-	private double discount_rate;
+	private double discountRate;
+	
 	public ProductPriceDto() {}
-	public ProductPriceDto(long id, long productId, char price_type_name, long price, double discount_rate) {
+
+	public ProductPriceDto(long id, long productId, char priceTypeName, long price, double discountRate) {
+		super();
 		this.id = id;
 		this.productId = productId;
-		this.price_type_name = price_type_name;
+		this.priceTypeName = priceTypeName;
 		this.price = price;
-		this.discount_rate = discount_rate;
+		this.discountRate = discountRate;
 	}
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public long getProductId() {
 		return productId;
 	}
+
 	public void setProductId(long productId) {
 		this.productId = productId;
 	}
-	public char getPrice_type_name() {
-		return price_type_name;
+
+	public char getPriceTypeName() {
+		return priceTypeName;
 	}
-	public void setPrice_type_name(char price_type_name) {
-		this.price_type_name = price_type_name;
+
+	public void setPriceTypeName(char priceTypeName) {
+		this.priceTypeName = priceTypeName;
 	}
+
 	public long getPrice() {
 		return price;
 	}
+
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	public double getDiscount_rate() {
-		return discount_rate;
+
+	public double getDiscountRate() {
+		return discountRate;
 	}
-	public void setDiscount_rate(double discount_rate) {
-		this.discount_rate = discount_rate;
+
+	public void setDiscountRate(double discountRate) {
+		this.discountRate = discountRate;
 	}
+	
+	public String getFormattedPrice() {
+		return PriceFomatter.priceFormat(price);
+	}
+
 	@Override
 	public String toString() {
-		return "ProductPriceDto [id=" + id + ", productId=" + productId + ", price_type_name=" + price_type_name
-				+ ", price=" + price + ", discount_rate=" + discount_rate + "]";
+		return "ProductPriceDto [id=" + id + ", productId=" + productId + ", priceTypeName=" + priceTypeName
+				+ ", price=" + price + ", discountRate=" + discountRate + "]";
 	}
+	
+	
 }
