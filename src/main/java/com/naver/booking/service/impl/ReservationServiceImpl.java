@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.naver.booking.dao.DisplayInfoImageDao;
 import com.naver.booking.dao.ProductPriceDao;
@@ -21,11 +22,13 @@ public class ReservationServiceImpl implements ReservationService {
 	ProductPriceDao productPriceDao;
 	
 	@Override
+	@Transactional
 	public DisplayInfoImageDto getDisplayInfoImage(long displayInfoId) {
 		return displayInfoImageDao.selectDisplayInfoImage(displayInfoId);
 	}
 
 	@Override
+	@Transactional
 	public List<ProductPriceDto> getProductPriceByProductId(long productId) {
 		return productPriceDao.selectProductPriceByProductId(productId);
 	}

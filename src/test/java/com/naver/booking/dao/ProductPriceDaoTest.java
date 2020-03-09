@@ -30,6 +30,7 @@ class ProductPriceDaoTest {
 		
 		productPriceDtoList = productPriceDao.selectProductPriceByProductId(productId);
 		
+		
 		for (ProductPriceDto productPriceDto : productPriceDtoList) {
 			System.out.println(productPriceDto);
 			System.out.println(PriceFomatter.priceFormat(productPriceDto.getPrice()));

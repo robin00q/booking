@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.naver.booking.dao.CategoryDao;
 import com.naver.booking.dto.CategoryDto;
@@ -16,6 +17,7 @@ public class CategoryServiceImpl implements CategoryService {
 	CategoryDao categoryDao;
 	
 	@Override
+	@Transactional
 	public List<CategoryDto> getCategoryIdName() {
 		return categoryDao.selectCategoryIdName();
 	}
