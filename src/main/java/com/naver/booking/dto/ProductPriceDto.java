@@ -1,22 +1,23 @@
 package com.naver.booking.dto;
 
+import com.naver.booking.enums.ProductPriceType;
 import com.naver.booking.util.PriceFomatter;
 
 public class ProductPriceDto {
 
 	private long id;
 	private long productId;
-	private char priceTypeName;
+	private ProductPriceType priceTypeName;
 	private long price;
 	private double discountRate;
 	
 	public ProductPriceDto() {}
 
-	public ProductPriceDto(long id, long productId, char priceTypeName, long price, double discountRate) {
+	public ProductPriceDto(long id, long productId, String priceTypeName, long price, double discountRate) {
 		super();
 		this.id = id;
 		this.productId = productId;
-		this.priceTypeName = priceTypeName;
+		this.priceTypeName = ProductPriceType.getProductPriceTypeByCode(priceTypeName);
 		this.price = price;
 		this.discountRate = discountRate;
 	}
@@ -37,12 +38,16 @@ public class ProductPriceDto {
 		this.productId = productId;
 	}
 
-	public char getPriceTypeName() {
+	public ProductPriceType getPriceTypeName() {
 		return priceTypeName;
 	}
+	
+	public String getKoreanPriceTypeName() {
+		return priceTypeName.getDescription();
+	}
 
-	public void setPriceTypeName(char priceTypeName) {
-		this.priceTypeName = priceTypeName;
+	public void setPriceTypeName(String priceTypeName) {
+		this.priceTypeName = ProductPriceType.getProductPriceTypeByCode(priceTypeName);
 	}
 
 	public long getPrice() {
