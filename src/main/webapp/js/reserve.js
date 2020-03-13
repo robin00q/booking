@@ -45,13 +45,10 @@ document.addEventListener('DOMContentLoaded', function(){
 			reservationInfo.agreement = !reservationInfo.agreement;
 			
 		} else if(clicked.className === 'btn_text' || clicked.id === 'agree_arrow_button'){
-			var arrowButton = clicked;
 			
-			if(!clicked.closest('.agreement').classList.contains('open')){
-				clicked.closest('.agreement').classList.add('open');
-			} else {
-				clicked.closest('.agreement').classList.remove('open');
-			}
+			clicked.closest('.agreement').classList.toggle('open');
+			
+			var arrowButton = clicked;
 			
 			if(clicked.tagName === 'SPAN'){
 				arrowButton = clicked.nextElementSibling;
