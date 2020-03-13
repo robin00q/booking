@@ -28,7 +28,54 @@ document.addEventListener('DOMContentLoaded', function(){
 	    }
 	}, false);
 	
+	// add agreement Button EventListener
+	var reservationInfo = new ReservationInfo(); 	
+	var agreementBoxWrap = document.querySelector('#agreement_box_wrap');
+	
+	agreementBoxWrap.addEventListener('click', function(event){
+		var clicked = event.target;
+		
+		if(clicked.classList.contains('agree_all')){
+			if(reservationInfo.agreement === false){
+				document.querySelector('.bk_btn_wrap').classList.remove('disable');
+			} else {
+				document.querySelector('.bk_btn_wrap').classList.add('disable');
+			}
+			
+			reservationInfo.agreement = !reservationInfo.agreement;
+			
+		} else if(clicked.className === 'btn_text' || clicked.id === 'agree_arrow_button'){
+			var arrowButton = clicked;
+			
+			if(!clicked.closest('.agreement').classList.contains('open')){
+				clicked.closest('.agreement').classList.add('open');
+			} else {
+				clicked.closest('.agreement').classList.remove('open');
+			}
+			
+			if(clicked.tagName === 'SPAN'){
+				arrowButton = clicked.nextElementSibling;
+			}
+			
+			if(arrowButton.classList.contains('fn-down2')){
+				arrowButton.classList.remove('fn-down2');
+				arrowButton.classList.add('fn-up2');
+			} else {
+				arrowButton.classList.remove('fn-up2');
+				arrowButton.classList.add('fn-down2');
+			}
+		}
+	}, false);
+	
 }, false);
+
+function ReservationInfo(){
+	this.revervationName = "";
+	this.reservationPhoneNumber = "";
+	this.reservationEmail = "";
+	this.totalCount = 0;
+	this.agreement = false;
+}
 
 function TicketBox(ticketBoxDOM){
 	this.type = ticketBoxDOM.dataset.type;
@@ -36,7 +83,7 @@ function TicketBox(ticketBoxDOM){
 	this.count = 0;
 	
 	this.totalPriceDOM = ticketBoxDOM.querySelector('#total_price');
-	this.totalCountDOM = ticketBoxDOM.querySelector('#total_count');
+	this.totalCountDOM = ticketBoxDOM.querySelector('.count_control_input');
 	this.minusButtonDOM = ticketBoxDOM.querySelector('.ico_minus3');
 }
 
