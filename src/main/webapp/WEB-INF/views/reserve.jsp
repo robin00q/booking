@@ -60,21 +60,22 @@
                     </div>
                 </div>
                 <div class="section_booking_ticket">
-                    <div class="ticket_body">
+                    <div class="ticket_body" id="ticket_box_wrap">
                     	<c:forEach items="${productPriceDtoList}" var="productPriceDtoList">
-                			<div class="qty">
-	                            <div class="count_control">
+                			<div class="qty" id="ticket_box">
+	                            <div class="count_control" 
+	                            		data-price='${productPriceDtoList.getPrice()}' 
+	                                	data-type='${productPriceDtoList.getPriceTypeName()}' 
+	                                	data-discount-rate='${productPriceDtoList.getDiscountRate()}'>
 	                                <!-- [D] 수량이 최소 값이 일때 ico_minus3, count_control_input에 disabled 각각 추가, 수량이 최대 값일 때는 ico_plus3에 disabled 추가 -->
-	                                <div class="clearfix" 
-	                                	data-price='${productPriceDtoList.getPrice()}' 
-	                                	data-type='${productPriceDtoList.getPriceTypeName()}'>
-	                                    <a class="btn_plus_minus spr_book2 ico_minus3 disabled" title="빼기"> </a> 
-	                                    <input type="tel" class="count_control_input disabled" value="0" readonly title="수량">
-	                                    <a class="btn_plus_minus spr_book2 ico_plus3" title="더하기">
+	                                <div class="clearfix" id="button_wrap">
+	                                    <a class="btn_plus_minus spr_book2 ico_minus3 disabled" id="ticket_minus_button" title="빼기"> </a> 
+	                                    <input type="tel" id="total_count" class="count_control_input disabled" value="0" readonly title="수량">
+	                                    <a class="btn_plus_minus spr_book2 ico_plus3" id="ticket_plus_button" title="더하기">
 	                                    </a>
 	                                </div>
 	                                <!-- [D] 금액이 0 이상이면 individual_price에 on_color 추가 -->
-	                                <div class="individual_price"><span class="total_price">0</span><span class="price_type">원</span></div>
+	                                <div class="individual_price"><span id="total_price" data-total-price='0'>0</span><span class="price_type">원</span></div>
 	                            </div>
 	                            <div class="qty_info_icon"> 
 	                            	<strong class="product_amount"> 
@@ -176,6 +177,7 @@
     </div>
 	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/hashmap.js"></script>
 	<script src="${pageContext.request.contextPath}/js/reserve.js"></script>
 </body>
 
