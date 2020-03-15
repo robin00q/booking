@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function(){
 	
 	// add agreement Button EventListener
 	var agreementBoxWrap = document.querySelector('#agreement_box_wrap');
-	
 	agreementBoxWrap.addEventListener('click', function(event){
 		var clicked = event.target;
 		
@@ -84,9 +83,25 @@ document.addEventListener('DOMContentLoaded', function(){
 		
 	}, false);
 	
+	// add autohypen EventListener
+	const telInput = document.querySelector('.tel_input');
+	telInput.addEventListener('keyup', () => {
+		telInput.value = autoHypenPhoneNumber(telInput.value);
+	});
 }, false);
 
-
+function autoHypenPhoneNumber(str){
+	str = str.replace(/[^0-9]/g, '');
+	if(str.length < 4) {
+		return str;
+	} else if(str.length < 7) {
+		return `${str.substr(0, 3)}-${str.substr(3)}`;
+	} else if(str.length < 11) {
+		return `${str.substr(0, 3)}-${str.substr(3, 3)}-${str.substr(6)}`;
+	} else {
+		return `${str.substr(0, 3)}-${str.substr(3, 4)}-${str.substr(7)}`;
+	}
+}
 
 function ReservationInfo(){
 	this.totalCountDOM = document.querySelector('#totalCount');
