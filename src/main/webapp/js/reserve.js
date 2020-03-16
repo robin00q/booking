@@ -74,10 +74,14 @@ document.addEventListener('DOMContentLoaded', function(){
 			return;
 		}
 		
-		reservationInfo = setReservationInfo(ticketBoxMap, validator);
+		reservationParam = setReservationInfo(ticketBoxMap, validator);
 		
-		postAjax(reservationInfo);
+		if(postReservationInfoAjax(reservationParam) === false){
+			alert("예약이 실패했습니다. 다시 예약해주세요.");
+			return;
+		}
 		
+		window.location.href="/booking/";
 		
 	}, false);
 	
@@ -89,8 +93,23 @@ document.addEventListener('DOMContentLoaded', function(){
 	
 }, false);
 
-function postAjax(reservationInfo){
-	console.log(reservationInfo);
+function postReservationInfoAjax(reservationParam){
+	var RequestURL = "/booking/api/reservations/";
+	var xmlReq = new XMLHttpRequest();
+	
+	xmlReq.onload = function(){
+		console.log(this.status);
+		if(this.status === "201"){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	xmlReq.open("POST", RequestURL);
+	xmlReq.setRequestHeader("Content-Type", "application/json");
+	xmlReq.setRequestHeader("charset", "utf-8");
+	xmlReq.send(JSON.stringify(reservationParam));
 }
 
 function setReservationInfo(ticketBoxMap, validator){
@@ -102,22 +121,22 @@ function setReservationInfo(ticketBoxMap, validator){
 	reservationInfo.reservationEmail = validator.emailDOM.value;
 	
 	
-	var reservationInfoPrice = [];
+	var prices = [];
 	for(let[key, value] of Object.entries(ticketBoxMap.getAll())){
 		var jsonObject = {};
 		
-		jsonObject.productPriceId = value.productPriceId;
 		jsonObject.count = value.count;
+		jsonObject.productPriceId = value.productPriceId;
 		
-		reservationInfoPrice.push(jsonObject);
+		prices.push(jsonObject);
 	}
 	
 	var reservation = {
-		reservationInfo,
-		reservationInfoPrice
+		...reservationInfo,
+		prices
 	}
 	
-	return reservationInfo;
+	return reservation;
 }
 
 function Validator(inlineFormDOM){

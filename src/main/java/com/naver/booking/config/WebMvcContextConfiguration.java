@@ -16,6 +16,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 		"com.naver.booking.api.category.controller",
 		"com.naver.booking.api.product.controller",
 		"com.naver.booking.api.promotion.controller",
+		"com.naver.booking.api.reservation.controller",
 		"com.naver.booking.controller", 
 		})
 public class WebMvcContextConfiguration implements WebMvcConfigurer {
