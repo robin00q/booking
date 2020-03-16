@@ -5,7 +5,7 @@ import com.naver.booking.util.PriceFomatter;
 
 public class ProductPriceDto {
 
-	private long id;
+	private long productPriceId;
 	private long productId;
 	private ProductPriceType priceTypeName;
 	private long price;
@@ -13,21 +13,20 @@ public class ProductPriceDto {
 	
 	public ProductPriceDto() {}
 
-	public ProductPriceDto(long id, long productId, String priceTypeName, long price, double discountRate) {
-		super();
-		this.id = id;
+	public ProductPriceDto(long productPriceId, long productId, String priceTypeName, long price, double discountRate) {
+		this.productPriceId = productPriceId;
 		this.productId = productId;
 		this.priceTypeName = ProductPriceType.getProductPriceTypeByCode(priceTypeName);
 		this.price = price;
 		this.discountRate = discountRate;
 	}
 
-	public long getId() {
-		return id;
+	public long getProductPriceId() {
+		return productPriceId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setProductPriceId(long productPriceId) {
+		this.productPriceId = productPriceId;
 	}
 
 	public long getProductId() {
@@ -72,7 +71,7 @@ public class ProductPriceDto {
 
 	@Override
 	public String toString() {
-		return "ProductPriceDto [id=" + id + ", productId=" + productId + ", priceTypeName=" + priceTypeName
+		return "ProductPriceDto [productPriceId=" + productPriceId + ", productId=" + productId + ", priceTypeName=" + priceTypeName
 				+ ", price=" + price + ", discountRate=" + discountRate + "]";
 	}
 	

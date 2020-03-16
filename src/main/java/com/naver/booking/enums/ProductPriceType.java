@@ -10,7 +10,9 @@ public enum ProductPriceType {
 	SET("S", "세트"),
 	DISABLED("D", "장애인"),
 	COMMUNITY("C", "지역주민"),
-	EARLY_BIRD("E", "얼리버드");
+	EARLY_BIRD("E", "얼리버드"),
+	EVERY_BODY("R", "모두"),
+	VARIFIED("V", "초대받은사람"),;
 	
 	private final String code;
 	private final String description;
@@ -40,6 +42,7 @@ public enum ProductPriceType {
 		ProductPriceType productPriceType = productPriceTypeMap.get(code);
 		
 		if(productPriceType == null) {
+			System.out.println(code);
 			throw new IllegalArgumentException("Wrong value for price type enum");
 		}
 		
