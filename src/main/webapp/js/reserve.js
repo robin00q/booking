@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	    ticketBoxMap.put(ticketBoxDOM.dataset.type, new TicketBox(ticketBoxDOM));
 	});
 	
-	// initialize & generate ReservationInfo
-	var reservationInfo = new ReservationInfo();
+	// initialize & generate Validator
 	var validator = new Validator(document.querySelector('.form_horizontal'));
 	
 	// add Button + / - Button EventListener
@@ -22,10 +21,10 @@ document.addEventListener('DOMContentLoaded', function(){
 	        
 	        if(clicked.id === 'ticket_plus_button'){
 	            currentTicketBox.addTicket();
-	            reservationInfo.manageTotalCount('add');
+	            validator.manageTotalCount('add');
 	        } else if(clicked.id === 'ticket_minus_button'){
 	            currentTicketBox.subtractTicket();
-	            reservationInfo.manageTotalCount('subtract');
+	            validator.manageTotalCount('subtract');
 	        }
 	        
 	        currentTicketBox.eachCountDOM.value = currentTicketBox.count;
@@ -40,13 +39,13 @@ document.addEventListener('DOMContentLoaded', function(){
 		var clicked = event.target;
 		
 		if(clicked.classList.contains('agree_all')){
-			if(reservationInfo.agreement === false){
+			if(validator.agreement === false){
 				document.querySelector('.bk_btn_wrap').classList.remove('disable');
 			} else {
 				document.querySelector('.bk_btn_wrap').classList.add('disable');
 			}
 			
-			reservationInfo.agreement = !reservationInfo.agreement;
+			validator.agreement = !validator.agreement;
 			
 		} else if(clicked.className === 'btn_text' || clicked.id === 'agree_arrow_button'){
 			
@@ -71,14 +70,13 @@ document.addEventListener('DOMContentLoaded', function(){
 	// add submitButton EventListener
 	var submitButton = document.querySelector('#submit_button');
 	submitButton.addEventListener('click', function(event){
-		if(this.classList.contains('disable')){
+		if(this.classList.contains('disable') || !validator.validateForm()){
 			return;
 		}
 		
-		if(validator.validateForm()){
-			reservationInfo.setReservationInfo(validator);
-			console.log(reservationInfo);
-		}
+		reservationInfo = setReservationInfo(ticketBoxMap, validator);
+		
+		postAjax(reservationInfo);
 		
 		
 	}, false);
@@ -91,38 +89,45 @@ document.addEventListener('DOMContentLoaded', function(){
 	
 }, false);
 
-function ReservationInfo(){
-	this.totalCountDOM = document.querySelector('#totalCount');
-
-	this.reservationName = "";
-	this.reservationPhoneNumber = "";
-	this.reservationEmail = "";
-	this.totalCount = "";
-	this.agreement = false;
+function postAjax(reservationInfo){
+	console.log(reservationInfo);
 }
 
-ReservationInfo.prototype.manageTotalCount = function(addOrSubtract){
-	if(addOrSubtract === 'add'){
-		this.totalCountDOM.innerText = ++this.totalCountDOM.dataset.totalCount;
-	} else if(addOrSubtract === 'subtract'){
-		if(this.totalCountDOM.dataset.totalCount > 0){
-			this.totalCountDOM.innerText = --this.totalCountDOM.dataset.totalCount;
-		}
+function setReservationInfo(ticketBoxMap, validator){
+	var reservationInfo = {};
+	reservationInfo.productId = document.querySelector('#display_product_info').dataset.productId;
+	reservationInfo.displayInfoId = document.querySelector('#display_product_info').dataset.displayInfoId;
+	reservationInfo.reservationName = validator.nameDOM.value;
+	reservationInfo.reservationTel = validator.telDOM.value;
+	reservationInfo.reservationEmail = validator.emailDOM.value;
+	
+	
+	var reservationInfoPrice = [];
+	for(let[key, value] of Object.entries(ticketBoxMap.getAll())){
+		var jsonObject = {};
+		
+		jsonObject.productPriceId = value.productPriceId;
+		jsonObject.count = value.count;
+		
+		reservationInfoPrice.push(jsonObject);
 	}
-}
-
-ReservationInfo.prototype.setReservationInfo = function(validator){
-	this.reservationName = validator.nameDOM.value;
-	this.reservationPhoneNumber = validator.telDOM.value;
-	this.reservationEmail = validator.emailDOM.value;
-	this.totalCount = this.totalCountDOM.dataset.totalCount;
-	this.agreement = true;
+	
+	var reservation = {
+		reservationInfo,
+		reservationInfoPrice
+	}
+	
+	return reservationInfo;
 }
 
 function Validator(inlineFormDOM){
 	this.nameDOM = inlineFormDOM.querySelector('#name');
 	this.telDOM = inlineFormDOM.querySelector('#tel');
 	this.emailDOM = inlineFormDOM.querySelector('#email');
+	this.totalCountDOM = document.querySelector('#totalCount');
+
+	this.totalCount = this.totalCountDOM.dataset.totalCount;
+	this.agreement = false;
 	
 	this.nameRegex = /^[가-힣]{2,4}$/;
 	this.telRegex = /^01(0|1|8|9|0)-\d{3,4}-\d{4}$/;
@@ -146,8 +151,25 @@ Validator.prototype.validateForm = function(){
 		this.emailDOM.value = "형식이 틀렸거나 너무 짧아요";
 		this.isValid = false;
 	}
+	if(!this.agreement){
+		this.isValid = false;
+	}
+	if(this.totalCount === '0'){
+		this.isValid = false;
+	}
 	
 	return this.isValid;
+}
+
+Validator.prototype.manageTotalCount = function(addOrSubtract){
+	if(addOrSubtract === 'add'){
+		this.totalCountDOM.innerText = ++this.totalCountDOM.dataset.totalCount;
+	} else if(addOrSubtract === 'subtract'){
+		if(this.totalCountDOM.dataset.totalCount > 0){
+			this.totalCountDOM.innerText = --this.totalCountDOM.dataset.totalCount;
+		}
+	}
+	this.totalCount = this.totalCountDOM.dataset.totalCount;
 }
 
 function autoHypenTelephoneNumber(tel){
@@ -164,6 +186,7 @@ function autoHypenTelephoneNumber(tel){
 }
 
 function TicketBox(ticketBoxDOM){
+	this.productPriceId = ticketBoxDOM.dataset.productPriceId;
 	this.type = ticketBoxDOM.dataset.type;
 	this.price = ticketBoxDOM.dataset.price;
 	this.count = 0;

@@ -18,8 +18,8 @@
         <div class="header fade">
             <header class="header_tit">
                 <h1 class="logo">
-                    <a href="./mainpage.html" class="lnk_logo" title="네이버"> <span class="spr_bi ico_n_logo">네이버</span> </a>
-                    <a href="./mainpage.html" class="lnk_logo" title="예약"> <span class="spr_bi ico_bk_logo">예약</span> </a>
+                    <a href="/booking/" class="lnk_logo" title="네이버"> <span class="spr_bi ico_n_logo">네이버</span> </a>
+                    <a href="/booking/" class="lnk_logo" title="예약"> <span class="spr_bi ico_bk_logo">예약</span> </a>
                 </h1>
                 <a href="#" class="btn_my"> <span title="예약확인">예약확인</span> </a>
             </header>
@@ -60,10 +60,15 @@
                     </div>
                 </div>
                 <div class="section_booking_ticket">
+                	<div id="display_product_info" 
+                		data-product-id='${displayInfoImageDto.getProductId()}' 
+                		data-display-info-id='${displayInfoImageDto.getDisplayInfoId()}'>
+                	</div>
                     <div class="ticket_body" id="ticket_box_wrap">
                     	<c:forEach items="${productPriceDtoList}" var="productPriceDtoList">
                 			<div class="qty" id="ticket_box">
 	                            <div class="count_control" 
+	                            		data-product-price-id='${productPriceDtoList.getProductPriceId()}'
 	                            		data-price='${productPriceDtoList.getPrice()}' 
 	                                	data-type='${productPriceDtoList.getPriceTypeName()}' 
 	                                	data-discount-rate='${productPriceDtoList.getDiscountRate()}'>
@@ -114,7 +119,7 @@
                                 </div>
                                 <div class="inline_form last"> <label class="label" for="message">예매내용</label>
                                     <div class="inline_control">
-                                        <p class="inline_txt selected">총 <span id="totalCount" data-total-count>0</span>매</p>
+                                        <p class="inline_txt selected">총 <span id="totalCount" data-total-count="0">0</span>매</p>
                                     </div>
                                 </div>
                             </form>
