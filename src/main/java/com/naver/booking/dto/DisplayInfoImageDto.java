@@ -2,6 +2,7 @@ package com.naver.booking.dto;
 
 public class DisplayInfoImageDto {
 
+	private int 	productId;
 	private int 	displayInfoId;
 	private String 	openingHours;
 	private String 	placeStreet;
@@ -10,12 +11,20 @@ public class DisplayInfoImageDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public DisplayInfoImageDto(int displayInfoId, String openingHours, String placeStreet, String saveFileName) {
+	public DisplayInfoImageDto(int productId, int displayInfoId, String openingHours, String placeStreet,
+			String saveFileName) {
 		super();
+		this.productId = productId;
 		this.displayInfoId = displayInfoId;
 		this.openingHours = openingHours;
 		this.placeStreet = placeStreet;
 		this.saveFileName = saveFileName;
+	}
+	public int getProductId() {
+		return productId;
+	}
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 	public int getDisplayInfoId() {
 		return displayInfoId;
@@ -43,7 +52,8 @@ public class DisplayInfoImageDto {
 	}
 	@Override
 	public String toString() {
-		return "DisplayInfoImageDto [displayInfoId=" + displayInfoId + ", openingHours=" + openingHours
-				+ ", placeStreet=" + placeStreet + ", saveFileName=" + saveFileName + "]";
+		return "DisplayInfoImageDto [productId=" + productId + ", displayInfoId=" + displayInfoId + ", openingHours="
+				+ openingHours + ", placeStreet=" + placeStreet + ", saveFileName=" + saveFileName + "]";
 	}
+	
 }

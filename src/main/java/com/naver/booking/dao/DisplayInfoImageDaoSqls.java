@@ -4,7 +4,7 @@ public class DisplayInfoImageDaoSqls {
 
 	public static final String SELECT_DISPLAY_INFO_IMAGE = 
 			"SELECT" +
-//			"	product.id as product_id," +
+			"	product.id as product_id," +
 			"	display_info.id as display_info_id," + 
 			"	display_info.opening_hours as opening_hours," + 
 			"	display_info.place_street as place_street," + 
